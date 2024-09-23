@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Oswald:wght@200..700&display=swap');
+
+.container{
+  max-width: 100%;
+}
+
+.inputgroup input::placeholder{
+  color: black;
+}
+
+.btn{
+  margin-left: 17%;
+  font-weight: 600;
+  color: white;
+}
+
+.sticky-navbar{
+  position: fixed;
+  top: 0;
+}
+
+.active{
+  /* color: rgb(55 65 81); */
+  font-weight: bold;
+}
+
+.card, .card1{
+  position: static;
+}

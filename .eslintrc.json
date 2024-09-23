@@ -1,0 +1,4 @@
+{
+  "extends": "next/core-web-vitals"
+}
+//this file used for highlighting errors in your program
