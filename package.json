@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@heroicons/react": "^2.1.5",
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^5.16.4",
@@ -26,7 +28,7 @@
     "mini-css-extract-plugin": "^2.9.0",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0",
-    "next": "14.2.3",
+    "next": "^14.2.13",
     "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
     "razorpay": "^2.9.4",
