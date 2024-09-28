@@ -3,7 +3,7 @@
 export default function Footer()
 {
     return(
-        < section className="container">
+        < section className="container mx-auto">
           <div className="relative flex flex-col items-center justify-center h-full mt-20 bg-peach">
             <div className="text-center mb-16">
               <h1 className="text-5xl  font-serif text-orange-500 pt-32">Let’s Make this happen</h1>

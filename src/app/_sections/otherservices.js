@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/card';
 export default function OtherServices()
 {
     return(
-        < section className="container">
+        < section className="container mx-auto">
           <div className=" mx-auto text-center">
             <h2 className="text-4xl font-medium my-20">Our Standout Support for a Healthier You</h2>
             <img src='/healthier.avif' className='rounded-3xl px-20 pb-20  h-screen w-full object-cover' />
@@ -41,8 +41,8 @@ export default function OtherServices()
             </div>
             <h6 className="text-slate-400 font-bold mt-28 mb-5">Pricing</h6>
             <h2 className="font-medium text-5xl font-serif text-slate-700 ml-20 mb-6">Health Plans That Deliver Results!</h2>
-            <p className='pl-24 text-slate-500 text-base'>Affordable,Expert-Guided Nutrition Plans for Every Need</p>
-            <div className='flex mx-14'>
+            <p className='px-10 text-slate-500 text-base'>Affordable,Expert-Guided Nutrition Plans for Every Need</p>
+            <div className='lg:flex mx-14'>
               <Card className='card w-full bg-peach mr-3 my-20 py-3 px-15'>
                 <img src='/bottle.webp' className='h-72 w-72 py-10 px-10 ml-40 rounded-full' />
                 <CardHeader className='justify-center font-medium text-3xl text-slate-700 font-serif'>

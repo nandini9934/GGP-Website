@@ -11,8 +11,8 @@ export default function Navbar() {
   };
 
   return (
-    <section className="container mx-auto">
-      <nav className="bg-peach py-4 px-5">
+    <section className="container mx-auto ">
+      <nav className="bg-peach relative py-4 px-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
@@ -46,7 +46,7 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div
             className={`${
-              isOpen ? 'block' : 'hidden'
+              isOpen ? 'absolute mx-52 py-4 px-4 top-16 left-0 w-full bg-peach' : 'hidden'
             } md:flex md:items-center md:space-x-8 space-y-4 md:space-y-0 mt-4 md:mt-0 mr-96`}
           >
             <Link

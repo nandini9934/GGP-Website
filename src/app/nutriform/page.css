@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.container{
-  max-width: 100%;
-}
 
   body {
     background: linear-gradient(to right, darkgreen,rgb(24, 129, 24), lightgreen)

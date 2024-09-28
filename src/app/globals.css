@@ -3,9 +3,6 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Oswald:wght@200..700&display=swap');
 
-.container{
-  max-width: 100%;
-}
 
 .inputgroup input::placeholder{
   color: black;
