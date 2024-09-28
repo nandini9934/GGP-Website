@@ -5,14 +5,14 @@ export default function Header() {
         <div className="grid grid-cols-1 items-start lg:grid lg:grid-cols-2 gap-4 items-center md:justify-between">
           {/* Left Content */}
           <div className="col-span-1 lg:mb-20 text-center lg:text-left">
-            <h1 className="text-3xl xl:text-6xl md:text-2xl font-bold leading-tight font-amsterdam">
+            <h1 className="text-[1.5rem] xl:text-6xl md:text-2xl font-bold leading-tight font-amsterdam">
               <span className="text-orange-600">TRANSFORM</span>
               <span className="text-slate-800 ml-2">YOUR</span>
             </h1>
-            <h1 className="text-3xl xl:text-6xl md:text-2xl font-bold text-slate-800 leading-tight whitespace-nowrap font-tanker">
+            <h1 className="text-[1.5rem] xl:text-6xl md:text-2xl font-bold text-slate-800 leading-tight whitespace-nowrap font-tanker">
               HEALTH WITH GOOD GUT
             </h1>
-            <h1 className="text-3xl xl:text-6xl md:text-2xl font-bold text-slate-800 leading-tight font-tanker">
+            <h1 className="text-[1.5rem] xl:text-6xl md:text-2xl font-bold text-slate-800 leading-tight font-tanker">
               PROJECT
             </h1>
             <p className="text-lg xl:text-2xl md:text-xl text-slate-600 mt-4 md:mt-6">
