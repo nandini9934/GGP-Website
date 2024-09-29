@@ -5,6 +5,8 @@ import axios from "axios";
 import ThankYouCard from "../components/Thankyoucard";
 import Loader from "../components/Loader";
 import "./stepper.css";
+import Navbar from "../_sections/navbar";
+import Footer from "../_sections/footer";
 
 
 function FormPage() {
@@ -149,7 +151,7 @@ function FormPage() {
 
   const step1 = () => {
     return (
-      <div className="bg-white w-[700px] py-10 pl-10 shadow-2xl rounded-xl flex ">
+      <div className="bg-white lg:w-[700px] py-10 justify-center mx-4 shadow-2xl rounded-xl flex ">
         <div className="text-xl pt-7">
           <h2 className="pb-4">
             <strong>Personal Information</strong>
@@ -165,7 +167,7 @@ function FormPage() {
               placeholder="Enter your name..."
               value={form.name}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             />
             {error.name && <p className="p text-red-600">{error.name}</p>}
           </div>
@@ -182,7 +184,7 @@ function FormPage() {
 
               value={form.phoneno}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             />
             {error.phoneno && <p className="p">{error.phoneno}</p>}
 
@@ -200,12 +202,12 @@ function FormPage() {
 
               value={form.age}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             />
           </div>
 
-          <div className="inputgroup pb-8 flex gap-8">
-            <div className="flex-1">
+          <div className="inputgroup pb-8 lg:flex gap-8">
+            <div className="flex-1 pb-8 lg:pb-0">
               <label htmlFor="height" className="text-slate-600 text-lg font-bold pb-1 block">
                 Height
               </label>
@@ -216,7 +218,7 @@ function FormPage() {
                 placeholder="Enter your height..."
                 value={form.height}
                 onChange={handleChange}
-                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[18rem]"
+                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[18rem]"
               />
             </div>
 
@@ -231,7 +233,7 @@ function FormPage() {
                 placeholder="Enter your weight..."
                 value={form.weight}
                 onChange={handleChange}
-                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[18.5rem]"
+                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[18.5rem]"
               />
             </div>
           </div>
@@ -247,7 +249,7 @@ function FormPage() {
 
               value={form.gender}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select your gender</option>
               <option value="male">Male</option>
@@ -265,7 +267,7 @@ function FormPage() {
 
   const step2 = () => {
     return (
-      <div className="bg-white w-[700px] py-10 px-8 z-10 shadow-2xl rounded-xl flex justify-center">
+      <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-4 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
           <h2 className="pb-4">
             <strong>General Information</strong>
@@ -281,7 +283,7 @@ function FormPage() {
               required
               value={form.brings}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Losing weight">Losing weight</option>
@@ -308,7 +310,7 @@ function FormPage() {
               required
               value={form.goals}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="to live a healthy life">To live a healthy Life</option>
@@ -331,7 +333,7 @@ function FormPage() {
               required
               value={form.achieve}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Very Motivated">Very Motivated</option>
@@ -353,7 +355,7 @@ function FormPage() {
               required
               value={form.time}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="3 Months">3 Months</option>
@@ -374,7 +376,7 @@ function FormPage() {
               required
               value={form.stops}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Laziness">Laziness</option>
@@ -394,7 +396,7 @@ function FormPage() {
   const step3 = () => {
     return (
 
-      <div className="bg-white w-[700px] py-10 px-8 z-10 shadow-2xl rounded-xl flex justify-center">
+      <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-4 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
           <h2 className="pb-4">
             <strong>Nutrition Based Information</strong>
@@ -411,7 +413,7 @@ function FormPage() {
               required
               value={form.servings}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Less than 1">Less than 1</option>
@@ -432,7 +434,7 @@ function FormPage() {
               required
               value={form.grains}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -454,7 +456,7 @@ function FormPage() {
               required
               value={form.chicken}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -475,7 +477,7 @@ function FormPage() {
               required
               value={form.drink}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -497,7 +499,7 @@ function FormPage() {
               required
               value={form.sweets}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -517,7 +519,7 @@ function FormPage() {
 
   const step4 = () => {
     return (
-      <div className="bg-white w-[700px] py-10 px-8 z-10 shadow-2xl rounded-xl flex justify-center">
+      <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-8 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
           <h2 className="pb-4">
             <strong>Medical History Information</strong>
@@ -533,7 +535,7 @@ function FormPage() {
               required
               value={form.medical}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Yes">Yes</option>
@@ -552,7 +554,7 @@ function FormPage() {
               required
               value={form.chronic}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Yes">Yes</option>
@@ -571,7 +573,7 @@ function FormPage() {
               required
               value={form.ill}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -593,7 +595,7 @@ function FormPage() {
               required
               value={form.physical}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Sedentary">
@@ -644,7 +646,7 @@ function FormPage() {
     const steps = ["Personal Info.", "General Info.", "Nutrition Based", "Medical History"]
    
     return (
-      <div className="flex justify-between">
+      <div className="hidden lg:block lg:flex justify-between">
         {steps?.map((step, i) => (
           <div key={i} className={`step-item ${currentStep === i + 1 && "active"} ${i+1 < currentStep && "complete"}`}>
             <div className="step">{i + 1}</div>
@@ -657,25 +659,25 @@ function FormPage() {
 
   return (
     <>
-
-      <div className="container  bg-peach pb-9 flex justify-center ">
+<Navbar/>
+      <div className="container mx-auto  bg-peach pb-9 flex justify-center ">
 
         {!formSubmitted ? <div>
 
-          <h1 className="text-center text-[#e15f15] font-serif font-bold text-5xl py-10 ">
+          <h1 className="text-center text-[#e15f15] font-bold text-5xl py-10 font-amsterdam mx-4">
             Registration Form
           </h1>
           <Stepper />
 
           {selectForm()}
-          {formno == 1 ? <div className="flex justify-center mt-8">
+          {formno == 1 ? <div className="flex justify-center mt-8 mx-4">
             <button
               onClick={() =>  setformno(formno + 1) }
               className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
             >
               Next
             </button>
-          </div> : formno == 4 ? <div className="flex justify-center gap-4 mt-8">
+          </div> : formno == 4 ? <div className="flex justify-center gap-4 mt-8 mx-4">
             <button
               onClick={() => setformno(formno - 1)}
               className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
@@ -689,7 +691,7 @@ function FormPage() {
               Submit
             </button>
           </div> :
-            <div className="flex justify-center gap-4 mt-8">
+            <div className="flex justify-center gap-4 mt-8 mx-4">
               <button
                 onClick={() => setformno(formno - 1)}
                 className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
@@ -710,6 +712,7 @@ function FormPage() {
         }
 
       </div>
+      <Footer/>
     </>
   );
 };

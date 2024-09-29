@@ -1,6 +1,11 @@
+import Footer from "../_sections/footer";
+import Navbar from "../_sections/navbar";
+
 const ThankYouCard = () => {
     return (
-      <div className="flex items-center justify-center shadow-2xl rounded-2xl min-h-96 ">
+      <>
+      <Navbar/>
+      <div className="flex items-center justify-center shadow-2xl rounded-2xl min-h-96 mx-4">
         <div className="bg-white p-6 text-center">
           <h2 className="text-2xl font-bold mb-4">Thank You!</h2>
           <p>Your form has been successfully submitted.</p>
@@ -12,6 +17,8 @@ const ThankYouCard = () => {
           </button>
         </div>
       </div>
+      <Footer/>
+      </>
     );
   };
   

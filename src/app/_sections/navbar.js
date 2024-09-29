@@ -11,16 +11,72 @@ export default function Navbar() {
   };
 
   return (
-    <section className="container mx-auto ">
+    <section className="container mx-auto">
       <nav className="bg-peach relative py-4 px-5">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center text-xl justify-between lg:grid lg:grid-cols-12 ">
           {/* Logo */}
-          <div className="flex items-center">
-            <img src="/logo.png" height={60} width={60} alt="Logo" />
-          </div>
+          <div className='col-span-1'>
+            <img src="/logo.png" height={100} width={100} alt="Logo" />
+            
+</div>
+<div className="hidden lg:col-start-4 lg:col-end-11 lg:flex lg:gap-[50px]">
+            <Link
+              href="/"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Home
+            </Link>
 
-          {/* Hamburger Menu for Mobile */}
-          <div className="block md:hidden">
+            <Link
+              href="/#pricing"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/#pricing'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Why Choose Us
+            </Link>
+
+            <Link
+              href="/#team"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/#team'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Team
+            </Link>
+
+            <Link
+              href="/contactform"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/contactform'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Contact
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/privacy-policy'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Privacy policy
+            </Link>
+   {/* Hamburger Menu for Mobile */}
+  
+            </div>
+            <div className="block lg:hidden">
             <button
               onClick={toggleMenu}
               className="text-orange-500 hover:text-orange-500 focus:outline-none"
@@ -42,17 +98,19 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
+          </div>
 
-          {/* Navigation Links */}
+       
+ 
           <div
             className={`${
-              isOpen ? 'absolute mx-52 py-4 px-4 top-16 left-0 w-full bg-peach' : 'hidden'
-            } md:flex md:items-center md:space-x-8 space-y-4 md:space-y-0 mt-4 md:mt-0 mr-96`}
+              isOpen ? 'w-full bg-peach text-sm ml-2' : 'hidden'
+            }`}
           >
             <Link
-              href="/privacy-policy"
-              className={`block text-gray-500 font-bold ${
-                pathname === '/privacy-policy'
+              href="/"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/'
                   ? 'active'
                   : 'hover:text-orange-500 hover:underline'
               }`}
@@ -61,9 +119,9 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/payment"
-              className={`block text-gray-500 font-bold ${
-                pathname === '/payment'
+              href="/#pricing"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/#pricing'
                   ? 'active'
                   : 'hover:text-orange-500 hover:underline'
               }`}
@@ -72,9 +130,9 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/terms"
-              className={`block text-gray-500 font-bold ${
-                pathname === '/terms'
+              href="/#team"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/#team'
                   ? 'active'
                   : 'hover:text-orange-500 hover:underline'
               }`}
@@ -84,7 +142,7 @@ export default function Navbar() {
 
             <Link
               href="/contactform"
-              className={`block text-gray-500 font-bold ${
+              className={`block text-gray-500 font-bold mb-2 ${
                 pathname === '/contactform'
                   ? 'active'
                   : 'hover:text-orange-500 hover:underline'
@@ -92,9 +150,19 @@ export default function Navbar() {
             >
               Contact
             </Link>
+            <Link
+              href="/privacy-policy"
+              className={`block text-gray-500 font-bold mb-2 ${
+                pathname === '/privacy-policy'
+                  ? 'active'
+                  : 'hover:text-orange-500 hover:underline'
+              }`}
+            >
+              Privacy policy
+            </Link>
           </div>
-        </div>
+        
       </nav>
     </section>
-  );
+  );
 }
