@@ -167,7 +167,7 @@ function FormPage() {
               placeholder="Enter your name..."
               value={form.name}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             />
             {error.name && <p className="p text-red-600">{error.name}</p>}
           </div>
@@ -184,7 +184,7 @@ function FormPage() {
 
               value={form.phoneno}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             />
             {error.phoneno && <p className="p">{error.phoneno}</p>}
 
@@ -202,7 +202,7 @@ function FormPage() {
 
               value={form.age}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             />
           </div>
 
@@ -218,7 +218,7 @@ function FormPage() {
                 placeholder="Enter your height..."
                 value={form.height}
                 onChange={handleChange}
-                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[18rem]"
+                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[18rem]"
               />
             </div>
 
@@ -233,7 +233,7 @@ function FormPage() {
                 placeholder="Enter your weight..."
                 value={form.weight}
                 onChange={handleChange}
-                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[18.5rem]"
+                className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[18.5rem]"
               />
             </div>
           </div>
@@ -249,7 +249,7 @@ function FormPage() {
 
               value={form.gender}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select your gender</option>
               <option value="male">Male</option>
@@ -291,10 +291,8 @@ function FormPage() {
               <option value="Gaining muscle, losing fat is secondary">
                 Gaining muscle, losing fat is secondary
               </option>
-              <option value="Eating healthier without losing weightEating healthier without
-                losing weight">
-                Eating healthier without losing weightEating healthier without
-                losing weight
+              <option value="Eating healthier without losing weight">
+                Eating healthier without losing weight
               </option>
             </select>
           </div>
@@ -333,7 +331,7 @@ function FormPage() {
               required
               value={form.achieve}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Very Motivated">Very Motivated</option>
@@ -355,7 +353,7 @@ function FormPage() {
               required
               value={form.time}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="3 Months">3 Months</option>
@@ -376,7 +374,7 @@ function FormPage() {
               required
               value={form.stops}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Laziness">Laziness</option>
@@ -413,7 +411,7 @@ function FormPage() {
               required
               value={form.servings}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Less than 1">Less than 1</option>
@@ -434,7 +432,7 @@ function FormPage() {
               required
               value={form.grains}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -456,7 +454,7 @@ function FormPage() {
               required
               value={form.chicken}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -477,7 +475,7 @@ function FormPage() {
               required
               value={form.drink}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -499,7 +497,7 @@ function FormPage() {
               required
               value={form.sweets}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -535,7 +533,7 @@ function FormPage() {
               required
               value={form.medical}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Yes">Yes</option>
@@ -554,7 +552,7 @@ function FormPage() {
               required
               value={form.chronic}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Yes">Yes</option>
@@ -573,7 +571,7 @@ function FormPage() {
               required
               value={form.ill}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
@@ -595,7 +593,7 @@ function FormPage() {
               required
               value={form.physical}
               onChange={handleChange}
-              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded lg:w-[38.5rem]"
+              className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
               <option value="Sedentary">
@@ -712,7 +710,7 @@ function FormPage() {
         }
 
       </div>
-      <Footer/>
+<Footer/>
     </>
   );
 };
