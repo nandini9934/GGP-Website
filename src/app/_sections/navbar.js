@@ -104,7 +104,7 @@ export default function Navbar() {
  
           <div
             className={`${
-              isOpen ? 'w-full bg-peach text-sm ml-2' : 'hidden'
+              isOpen ? 'w-full bg-peach text-base ml-2' : 'hidden'
             }`}
           >
             <Link

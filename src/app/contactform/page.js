@@ -675,7 +675,7 @@ function FormPage() {
             >
               Next
             </button>
-          </div> : formno == 4 ? <div className="flex justify-center gap-4 mt-8 mx-4">
+          </div> : formno == 4 ? <div className="flex justify-center gap-4 mt-8 mx-8">
             <button
               onClick={() => setformno(formno - 1)}
               className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"

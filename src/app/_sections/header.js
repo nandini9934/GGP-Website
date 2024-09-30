@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div className="container mx-auto">
-      <section className="flex items-center justify-center lg:block bg-peach py-[2rem] px-[1.5rem] lg:py-[5rem] lg:px-[3.5rem] md:px-8">
+      <section className="flex items-center justify-center lg:block bg-peach py-[2rem] px-[1.5rem] lg:py-[5rem] lg:pt-[3rem] lg:px-[3.5rem] md:px-8">
         <div className="grid grid-cols-1 items-start lg:grid lg:grid-cols-2 gap-4 items-center md:justify-between">
           {/* Left Content */}
           <div className="col-span-1 lg:mb-20 text-center lg:text-left">
@@ -21,10 +21,11 @@ export default function Header() {
             <div className="lg:flex items-center mt-4 md:mt-6">
               <div className="flex justify-center space-x-2 pb-4 lg:pb-0">
                 {/* Placeholder for profile images */}
-                <img src="profile1.jpg" alt="profile1" className="w-10 h-10 rounded-full border-2 border-white" />
-                <img src="profile2.jpg" alt="profile2" className="w-10 h-10 rounded-full border-2 border-white" />
-                <img src="profile3.jpg" alt="profile3" className="w-10 h-10 rounded-full border-2 border-white" />
-                <img src="profile4.jpg" alt="profile4" className="w-10 h-10 rounded-full border-2 border-white" />
+                <img src="pic1.png" alt="profile1" className="w-10 h-10 rounded-full border-2 border-white" />
+                <img src="pic2.png" alt="profile2" className="w-10 h-10 rounded-full border-2 border-white" />
+                <img src="pic3.png" alt="profile3" className="w-10 h-10 rounded-full border-2 border-white" />
+                <img src="pic4.png" alt="profile4" className="w-10 h-10 rounded-full border-2 border-white" />
+                <img src="pic5.png" alt="profile4" className="w-10 h-10 rounded-full border-2 border-white" />
               </div>
               <p className="text-orange-500 text-lg ml-4">5.0 <span className="text-slate-500">From 50+ Success Stories</span></p>
             </div>
@@ -39,7 +40,7 @@ export default function Header() {
 
           {/* Right Image */}
           <div className="col-span-1">
-            <img src="/lady.avif" alt="Meditation" className="m-4" />
+            <img src="/lady.avif" alt="Meditation" className="mr-4" />
           </div>
         
         </div>

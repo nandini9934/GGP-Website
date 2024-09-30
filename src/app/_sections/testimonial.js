@@ -18,8 +18,8 @@ export default function Testimonial()
               <i className="fas fa-star text-orange-500 text-3xl"></i>
               <i className="fas fa-star text-orange-500 text-3xl"></i>
             </div>
-            <img src='/food.jpg' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
-            <p className='text-center font-bold text-base'>-- Kabir Singh</p>
+            <img src='/pic5.png' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
+            <p className='text-center font-bold text-base'>-- Jacob Mood</p>
             <p className='text-center text-slate-400 text-xs mb-5'>IT Professional</p>
           </div>
           <div className='col-span-1 rounded-lg shadow-lg w-full bg-peach mr-3 my-20 py-3 px-15'>
@@ -33,8 +33,8 @@ export default function Testimonial()
               <i className="fas fa-star text-orange-500 text-3xl"></i>
               <i className="fas fa-star text-orange-500 text-3xl"></i>
             </div>
-            <img src='/food.jpg' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
-            <p className='text-center font-bold text-base'>-- Kabir Singh</p>
+            <img src='/pic3.png' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
+            <p className='text-center font-bold text-base'>-- Mayra Smith</p>
             <p className='text-center text-slate-400 text-xs mb-5'>IT Professional</p>
           </div>
           <div className='col-span-1 rounded-lg shadow-lg w-full bg-peach mr-3 my-20 py-3 px-15'>
@@ -48,8 +48,8 @@ export default function Testimonial()
               <i className="fas fa-star text-orange-500 text-3xl"></i>
               <i className="fas fa-star text-orange-500 text-3xl"></i>
             </div>
-            <img src='/food.jpg' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
-            <p className='text-center font-bold text-base'>-- Kabir Singh</p>
+            <img src='/pic4.png' className='h-36 w-36 pt-5 pb-3 px-4 mx-auto rounded-full' />
+            <p className='text-center font-bold text-base'>-- Johnson Kinley</p>
             <p className='text-center text-slate-400 text-xs mb-5'>IT Professional</p>
           </div>
         </div>
