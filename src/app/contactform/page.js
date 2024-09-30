@@ -151,7 +151,7 @@ function FormPage() {
 
   const step1 = () => {
     return (
-      <div className="bg-white lg:w-[700px] py-10 justify-center mx-4 shadow-2xl rounded-xl flex ">
+      <div className="bg-white lg:w-[700px] py-10 justify-center mx-4 px-8 shadow-2xl rounded-xl flex ">
         <div className="text-xl pt-7">
           <h2 className="pb-4">
             <strong>Personal Information</strong>
@@ -265,7 +265,7 @@ function FormPage() {
     );
   };
 
-  const step2 = () => {
+  const step2 = () => { 
     return (
       <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-4 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
@@ -662,8 +662,8 @@ function FormPage() {
 
         {!formSubmitted ? <div>
 
-          <h1 className="text-center text-[#e15f15] font-bold text-5xl py-10 font-amsterdam mx-4">
-            Registration Form
+          <h1 className="text-center text-[#e15f15] font-semibold text-3xl py-10 font-amsterdam mx-4">
+            Enquiry Form
           </h1>
           <Stepper />
 

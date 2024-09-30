@@ -101,12 +101,12 @@ export default function Services() {
               <button className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold text-base py-3 mt-3 px-4 rounded-xl">Book Now</button>
             </div>
           </div>
-          <div className='col-span-1 w-full bg-peach my-10 py-3 px-15 justify-center rounded-[0.875rem] shadow-xl'>
+          <div className='col-span-1 w-full bg-peach my-10 py-3 px-4 justify-center rounded-[0.875rem] shadow-xl'>
             <img src='/pregnancy.gif' className='h-72 w-72 mx-auto py-10 px-10 rounded-full' />
             <div className='justify-center font-medium text-3xl mb-4 text-slate-700 font-serif'>
               <p>Pregnancy diet plan</p>
             </div>
-            <div className='lg:text-left text-start text-slate-500 px-4 text-sm lg:text-sm pl-[2rem] lg:pl-[3rem] lg:pt-5 space-y-4 mb-4'>
+            <div className='lg:text-left text-start text-slate-500 px-4 text-sm lg:text-sm pl-[1rem] lg:pl-[3rem] lg:pt-5 space-y-4 mb-4'>
               <li>Tailored Diet Plans for each trimester</li>
               <li>Monthly consultation with dietician</li>
               <li>Essential nutrition content</li>
