@@ -89,7 +89,7 @@ export default function Services() {
             <div className='justify-center font-medium text-3xl text-slate-700 font-serif mb-[1rem]'>
               <p>Nutritional diet plan</p>
             </div>
-            <div className='lg:text-left text-start text-slate-500 px-4 text-sm lg:text-sm pl-[2rem] lg:pl-[3rem] lg:pt-5  space-y-4 mb-4'>
+            <div className='lg:text-left text-start text-slate-500 px-4 text-xs lg:text-sm pl-[2rem] lg:pl-[3rem] lg:pt-5  space-y-4 mb-4'>
               <li>Customized diet plan on daily basis</li>
               <li>Weekly progress tracking on daily</li>
               <li>Access to verified nutrition content</li>
@@ -106,7 +106,7 @@ export default function Services() {
             <div className='justify-center font-medium text-3xl mb-4 text-slate-700 font-serif'>
               <p>Pregnancy diet plan</p>
             </div>
-            <div className='lg:text-left text-start text-slate-500 px-4 text-sm lg:text-sm pl-[1rem] lg:pl-[3rem] lg:pt-5 space-y-4 mb-4'>
+            <div className='lg:text-left text-start text-slate-500 px-4 text-xs lg:text-sm pl-[1rem] lg:pl-[2rem] lg:pt-5 space-y-4 mb-4'>
               <li>Tailored Diet Plans for each trimester</li>
               <li>Monthly consultation with dietician</li>
               <li>Essential nutrition content</li>
