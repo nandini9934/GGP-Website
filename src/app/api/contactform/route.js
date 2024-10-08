@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import dbConnect from "../../../../config/dbConnect";
 import user2 from "../../../../models/user2";
+
 export async function  POST(req) {
     try {
         console.log(req)

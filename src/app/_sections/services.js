@@ -5,7 +5,7 @@ export default function Services() {
   return (
     <div className="container mx-auto"> < section >
       <div className="mx-auto text-center">
-        <h2 className="text-4xl font-medium my-20">Our Standout Support for a Healthier You</h2>
+        <h2 className="text-5xl font-medium font-serif my-20">Our Standout Support for a Healthier You</h2>
         <div className='lg:grid lg:grid-cols-3 lg:items-center lg:px-20'>
           <img src='/healthier.avif' className='lg:col-span-1 lg:rounded-[4rem] rounded-[5.5rem] px-20 py-20 lg:p-11 object-cover' />
           <div className="text-center px-10 lg:col-span-2 lg:text-left">
