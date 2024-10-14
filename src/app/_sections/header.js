@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <div className="lg:bg-peach">
@@ -31,9 +33,11 @@ export default function Header() {
                 <p className="text-orange-500 text-lg ml-4">5.0 <span className="text-slate-500">From 50+ Success Stories</span></p>
               </div>
               <div className="lg:flex items-center mt-4 justify-center lg:justify-start md:mt-8">
+                <Link href="/contactform">
                 <button className="bg-orange-600 hover:bg-orange-500 text-white font-bold py-2 mb-4 xl:mb-0 md:py-3 px-4 md:px-8 rounded-lg">
                   Join Now
                 </button>
+                </Link>
                 <p className="ml-2 text-lg font-semibold text-slate-800">30-DAYS MONEY BACK GUARANTEE</p>
               </div>
 

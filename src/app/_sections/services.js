@@ -12,7 +12,9 @@ export default function Services() {
             <h2 className='font-medium lg:text-5xl text-4xl font-serif text-slate-700 mb-6'>Start Your Journey with Our Welcome Kit</h2>
             <p className='text-slate-500 text-lg lg:text-xl'>Begin your health transformation with a thoughtfully curated welcome kit. It includes essential tools, guides, and resources to kickstart your diet plan and keep you motivated.</p>
             <div className='flex justify-center lg:justify-start my-5 lg:my-7'>
+              {/* <Link href="/contactform">
               <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Get your welcome kit</button>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -24,7 +26,9 @@ export default function Services() {
             <h2 className='font-medium text-5xl font-serif text-slate-700 mb-6'>We're Here for You Anytime</h2>
             <p className='text-slate-500 text-xl'>Enjoy unlimited call support from our team of nutrition experts. Whether you have questions or need motivation, we're just a phone call away to ensure you stay on track.</p>
             <div className='lg:justify-left my-5 lg:my-7'>
-              <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Talk to a specialist</button>
+              <Link href="/contactform">
+                <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Talk to a specialist</button>
+              </Link>
             </div>
           </div>
           <img src='/doctors.avif' className='lg:col-span-1 rounded-[2.5rem] px-20 py-20 lg:p-5 object-cover' />
@@ -38,18 +42,22 @@ export default function Services() {
             <p className='text-slate-500 text-lg'>Enjoy unlimited call support from our team of nutrition experts. Whether you have questions or need motivation, we're just a phone call away to ensure you stay on track.</p>
           </div>
           <div className='flex justify-center my-5'>
-            <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl">Talk to a specialist</button>
+            <Link href="/contactform">
+              <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl">Talk to a specialist</button>
+            </Link>
           </div>
         </div>
 
 
         <div className='lg:grid lg:grid-cols-3 lg:items-center lg:px-24'>
-          <img src='/mobile.avif' className='lg:col-span-1 lg:rounded-[3rem] rounded-[5.5rem] px-20 py-20 lg:p-8 lg:w-full object-cover'/>
+          <img src='/mobile.avif' className='lg:col-span-1 lg:rounded-[3rem] rounded-[5.5rem] px-20 py-20 lg:p-8 lg:w-full object-cover' />
           <div className="text-center px-10 lg:col-span-2 lg:text-left">
             <h2 className='font-medium text-4xl lg:text-5xl font-serif text-slate-700 mb-6'>Instant Nutrition Support</h2>
             <p className='text-slate-500 text-lg lg:text-xl'>Get instant answers and guidance with our AI-powered nutrition chat bot. Available 24/7, it's like having a personal dietician in your pocket, ready to help you anytime.</p>
             <div className='flex justify-center lg:justify-start my-5 lg:my-7'>
-              <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Chat now</button>
+              <Link href="/contactform">
+                <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Chat now</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -61,7 +69,9 @@ export default function Services() {
             <h2 className='font-medium text-5xl font-serif text-slate-700 mb-6'>Tailored Diet Plans Just for You</h2>
             <p className='text-slate-500 text-xl'>Experience the benefits of a diet plan designed specifically for your needs. Our personalized plans consider your unique goals, preferences, and health conditions to ensure optimal results.</p>
             <div className='lg:justify-left my-5 lg:my-7'>
-              <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Get your Personalized Plan</button>
+              <Link href="/contactform">
+                <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl ">Get your Personalized Plan</button>
+              </Link>
             </div>
           </div>
           <img src='/nutrients.avif' className='lg:col-span-1 rounded-[2.5rem] px-20 py-20 lg:p-5 object-cover' />
@@ -74,7 +84,9 @@ export default function Services() {
             <p className='text-slate-500 text-lg'>Experience the benefits of a diet plan designed specifically for your needs. Our personalized plans consider your unique goals, preferences, and health conditions to ensure optimal results.</p>
           </div>
           <div className='flex justify-center my-5'>
-            <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl">Get your Personalized Plan</button>
+            <Link href="/contactform">
+              <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl">Get your Personalized Plan</button>
+            </Link>
           </div>
         </div>
 
@@ -98,7 +110,9 @@ export default function Services() {
               <li>Priority customer support</li>
             </div>
             <div className='justify-center mb-6'>
-              <button className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold text-base py-3 mt-3 px-4 rounded-xl">Book Now</button>
+              <Link href="/contactform">
+                <button className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold text-base py-3 mt-3 px-4 rounded-xl">Book Now</button>
+              </Link>
             </div>
           </div>
           <div className='col-span-1 w-full bg-peach my-10 py-3 px-4 justify-center rounded-[0.875rem] shadow-xl'>
@@ -115,7 +129,9 @@ export default function Services() {
               <li>Priority customer support</li>
             </div>
             <div className='justify-center mb-6'>
-              <button className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold text-base py-3 mt-3 px-4 rounded-xl">Book Now</button>
+              <Link href="/contactform">
+                <button className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold text-base py-3 mt-3 px-4 rounded-xl">Book Now</button>
+              </Link>
             </div>
           </div>
         </div>
