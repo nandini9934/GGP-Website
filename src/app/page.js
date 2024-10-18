@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/card';
@@ -12,38 +13,32 @@ import Health from './_sections/health';
 import Testimonial from './_sections/testimonial';
 import Footer from './_sections/footer';
 
-export const metadata = {
-  title: 'Good Gut Project - Home',
-  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
-  keywords: ['Good Gut Project', 'Nutrition', 'Gut Health', 'GGP'],
-};
-
 export default function Home() {
- 
+
 
   return (
     <>
-        <div className="grid grid-cols-1 divide-y divide-stone-300" >
-          {/* Navbar section*/}
-          <Navbar/> 
-          {/* Header Section */}
-          
-          <Header/>
+      <div className="grid grid-cols-1 divide-y divide-stone-300" >
+        {/* Navbar section*/}
+        <Navbar />
+        {/* Header Section */}
 
-          {/* About Section */}
-          <AboutUs/>
-        </div >
+        <Header />
+
+        {/* About Section */}
+        <AboutUs />
         {/* Services Section */}
-        <Services/>
+        <Services />
 
         {/*Health Section*/}
-       <Health/>
+        <Health />
 
         {/*Testimonial section*/}
-       <Testimonial/>
+        <Testimonial />
 
         {/*Footer Section */}
-        <Footer/>
+        <Footer />
+      </div >
     </>
   );
 }

@@ -4,10 +4,10 @@ import "./globals.css";
 // import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
-
 export const metadata = {
-  title: "Good Gut Project",
-  description: "Towards the healthy life",
+  title: 'Good Gut Project - Home',
+  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
+  keywords: ['Good Gut Project', 'Nutrition', 'Gut Health', 'GGP'],
 };
 
 export default function RootLayout({ children }) {
