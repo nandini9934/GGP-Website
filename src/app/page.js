@@ -14,7 +14,7 @@ import Footer from './_sections/footer';
 
 export const metadata = {
   title: 'Good Gut Project - Home',
-  description: ['Welcome to Good Gut Project, your guide to a healthier gut.','GGP'],
+  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
   keywords: ['Good Gut Project', 'Nutrition', 'Gut Health', 'GGP'],
 };
 
