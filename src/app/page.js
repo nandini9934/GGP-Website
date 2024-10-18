@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/card';
@@ -12,6 +11,12 @@ import OtherServices from './_sections/otherservices';
 import Health from './_sections/health';
 import Testimonial from './_sections/testimonial';
 import Footer from './_sections/footer';
+
+export const metadata = {
+  title: 'Good Gut Project - Home',
+  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
+  keywords: ['Good Gut Project', 'Nutrition', 'Gut Health'],
+};
 
 export default function Home() {
  
