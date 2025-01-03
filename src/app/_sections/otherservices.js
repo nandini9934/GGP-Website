@@ -8,7 +8,7 @@ export default function OtherServices()
           <div className=" mx-auto text-center">
             <h2 className="text-4xl font-medium my-20">Our Standout Support for a Healthier You</h2>
             <img src='/healthier.avif' className='rounded-[0.875rem] px-20 py-20  h-screen w-full object-cover' />
-            <div className="text-left ">
+            <div className="text-left">
               <h2 className='font-medium text-4xl font-serif text-slate-700 ml-20 mb-6'>Start Your Journey with Our Welcome Kit</h2>
               <p className='ml-20 text-slate-500 text-lg text-justify'>Begin your health transformation with a thoughtfully curated welcome kit. It includes essential tools, guides, and resources to kickstart your diet plan<p>and keep you motivated.</p></p>
             </div>
