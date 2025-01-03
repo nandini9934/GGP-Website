@@ -10,7 +10,7 @@ export default function OtherServices()
             <img src='/healthier.avif' className='rounded-[0.875rem] px-20 py-20  h-screen w-full object-cover' />
             <div className="text-left ">
               <h2 className='font-medium text-4xl font-serif text-slate-700 ml-20 mb-6'>Start Your Journey with Our Welcome Kit</h2>
-              <p className='ml-20 text-slate-500 text-lg'>Begin your health transformation with a thoughtfully curated welcome kit. It includes essential tools, guides, and resources to kickstart your diet plan<p>and keep you motivated.</p></p>
+              <p className='ml-20 text-slate-500 text-lg text-justify'>Begin your health transformation with a thoughtfully curated welcome kit. It includes essential tools, guides, and resources to kickstart your diet plan<p>and keep you motivated.</p></p>
             </div>
             <div className='items-center ml-20 my-5'>
               <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl"><Link href="/confirm">Get your welcome kit</Link></button>
@@ -18,7 +18,7 @@ export default function OtherServices()
             <img src='/doctors.avif' className='rounded-3xl px-20 pb-20 pt-10 h-96 w-full object-cover ' />
             <div className="text-left ">
               <h2 className='font-medium text-4xl font-serif text-slate-700 ml-20 mb-6'>We're Here for You Anytime</h2>
-              <p className='ml-20 text-slate-500 text-lg'>Enjoy unlimited call support from our team of nutrition experts. Whether you have questions or need motivation, we're just a phone call away to ensure you stay on track.</p>
+              <p className='ml-20 text-slate-500 text-lg text-justify'>Enjoy unlimited call support from our team of nutrition experts. Whether you have questions or need motivation, we're just a phone call away to ensure you stay on track.</p>
             </div>
             <div className='items-center ml-20 my-5'>
               <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl"><Link href="/confirm">Talk to a specialist</Link></button>
@@ -26,7 +26,7 @@ export default function OtherServices()
             <img src='/mobile.avif' className='rounded-3xl px-20 pb-20 pt-10 h-96 w-full ' />
             <div className="text-left ">
               <h2 className='font-medium text-4xl font-serif text-slate-700 ml-20 mb-6'>Instant Nutrition Support</h2>
-              <p className='ml-20 text-slate-500 text-lg'>Get instant answers and guidance with our AI-powered nutrition chat bot. Available 24/7, it's like having a personal dietician in your pocket, ready to help you anytime</p>
+              <p className='ml-20 text-slate-500 text-lg text-justify'>Get instant answers and guidance with our AI-powered nutrition chat bot. Available 24/7, it's like having a personal dietician in your pocket, ready to help you anytime</p>
             </div>
             <div className='items-center ml-20 my-5'>
               <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl"><Link href="/confirm">Chat now</Link></button>
@@ -34,7 +34,7 @@ export default function OtherServices()
             <img src='/nutrients.avif' className='rounded-3xl px-20 pb-20 pt-10 h-screen w-full object-cover' />
             <div className="text-left ">
               <h2 className='font-medium text-4xl font-serif text-slate-700 ml-20 mb-6'>Tailored Diet Plans Just for You</h2>
-              <p className='ml-20 text-slate-500 text-lg'>Experience the benefits of a diet plan designed specifically for your needs. Our personalized plans consider your unique goals, preferences, and health conditions to ensure optimal results.</p>
+              <p className='ml-20 text-slate-500 text-lg text-justify'>Experience the benefits of a diet plan designed specifically for your needs. Our personalized plans consider your unique goals, preferences, and health conditions to ensure optimal results.</p>
             </div>
             <div className='items-center ml-20 my-5'>
               <button className="flex  bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 px-4 rounded-xl"><Link href="/confirm">Get your Personalized Plan</Link></button>
