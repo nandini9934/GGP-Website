@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Email Template</title>
+  </head>
+  <body style="padding: 15px">
+    <img
+      src="https://www.goodgutproject.in/logo.png"
+      alt="Welcome Image"
+      style="width: 200px"
+    />
+    <div style="padding-left: 17px">
+      <div style="font-size: 120%">
+        <h3>New Lead has been submitted</h3>
+
+        <table style="border">
+          <tr>
+            <td>Name:</td>
+            <td>{{Name}}</td>
+          </tr>
+          <tr>
+            <td>Mobile No:</td>
+            <td>{{Mobile}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{Email}}</td>
+          </tr>
+          <tr>
+            <td>Goal:</td>
+            <td>{{Goal}}</td>
+          </tr>
+        </table>
+
+        <p><strong>Best regards,</strong></p>
+        <p><strong>Good Gut Project</strong></p>
+      </div>
+    </div>
+  </body>
+</html>

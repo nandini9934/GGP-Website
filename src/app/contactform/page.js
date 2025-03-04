@@ -8,12 +8,11 @@ import "./stepper.css";
 import Navbar from "../_sections/navbar";
 import Footer from "../_sections/footer";
 
-
 function FormPage() {
   const [form, setForm] = useState({
     name: "",
     phoneno: "",
-    age: "",
+    mail: "",
     height: "",
     weight: "",
     gender: "",
@@ -35,56 +34,48 @@ function FormPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false); // Add loading state
   const [error, setErrors] = useState({});
-   const [currentStep, setCurrentStep] = useState(1);
-   const [complete, setComplete] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [complete, setComplete] = useState(false);
 
-  
   const Validation = () => {
     console.log(form);
     if (!form.name) {
       setErrors({ ...error, name: "Name is required" });
       console.log("I am here!!!");
-    }
-    else {
+    } else {
       setErrors({ ...error, name: "" });
     }
 
     if (!form.phoneno) {
       setErrors({ ...error, phoneno: "Phoneno is required" });
-    }
-    else {
+    } else {
       setErrors({ ...error, phoneno: "" });
     }
 
-    if (!form.age) {
-      setErrors({ ...error, age: "Age is required" });
-    }
-    else {
-      setErrors({ ...error, age: "" });
+    if (!form.mail) {
+      setErrors({ ...error, mail: "mail is required" });
+    } else {
+      setErrors({ ...error, mail: "" });
     }
 
     if (!form.height) {
       setErrors({ ...error, height: "height is required" });
-    }
-    else {
+    } else {
       setErrors({ ...error, height: "" });
     }
 
     if (!form.weight) {
       setErrors({ ...error, weight: "weight is required" });
-    }
-    else {
+    } else {
       setErrors({ ...error, weight: "" });
     }
 
     if (!form.gender) {
       setErrors({ ...error, gender: "Please filled the fields" });
-    }
-    else {
+    } else {
       setErrors({ ...error, gender: "" });
     }
-  }
-
+  };
 
   let name, value;
   const handleChange = (e) => {
@@ -98,15 +89,15 @@ function FormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(form)
+    console.log(form);
     try {
       axios
         .post("/api/contactform", {
           name: form.name,
-          phoneno: form.phoneno,
-          age: form.age,
-          height: form.height,
-          weight: form.weight,
+          phoneno: form.phoneno.toString(),
+          mail: form.mail,
+          height: form.height.toString(),
+          weight: form.weight.toString(),
           gender: form.gender,
           brings: form.brings,
           goals: form.goals,
@@ -128,7 +119,6 @@ function FormPage() {
           alert("Request send successfully.");
           setFormSubmitted(true);
           setLoading(false);
-
         })
         .catch(function (error) {
           console.log(error.message);
@@ -144,10 +134,7 @@ function FormPage() {
 
   useEffect(() => {
     console.log(error);
-  }, [error])
-
- 
-
+  }, [error]);
 
   const step1 = () => {
     return (
@@ -173,34 +160,34 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="phoneno" className="text-slate-600 text-lg font-bold pb-1">
+            <p
+              htmlFor="phoneno"
+              className="text-slate-600 text-lg font-bold pb-1"
+            >
               Phone No.{" "}
             </p>
             <input
-              type="int"
+              type="number"
               id="phoneno"
               name="phoneno"
               placeholder="Enter your phone no..."
-
               value={form.phoneno}
               onChange={handleChange}
               className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             />
             {error.phoneno && <p className="p">{error.phoneno}</p>}
-
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="age" className="text-slate-600 text-lg font-bold pb-1">
-              Age{" "}
+            <p htmlFor="mail" className="text-slate-600 text-lg font-bold pb-1">
+              Mail Address{" "}
             </p>
             <input
-              type="int"
-              id="age"
-              name="age"
-              placeholder="Enter your age..."
-
-              value={form.age}
+              type="text"
+              id="mail"
+              name="mail"
+              placeholder="Enter your Mail Address..."
+              value={form.mail}
               onChange={handleChange}
               className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             />
@@ -208,11 +195,14 @@ function FormPage() {
 
           <div className="inputgroup pb-8 lg:flex gap-8">
             <div className="flex-1 pb-8 lg:pb-0">
-              <label htmlFor="height" className="text-slate-600 text-lg font-bold pb-1 block">
+              <label
+                htmlFor="height"
+                className="text-slate-600 text-lg font-bold pb-1 block"
+              >
                 Height
               </label>
               <input
-                type="text"
+                type="number"
                 id="height"
                 name="height"
                 placeholder="Enter your height..."
@@ -223,11 +213,14 @@ function FormPage() {
             </div>
 
             <div className="flex-1">
-              <label htmlFor="weight" className="text-slate-600 text-lg font-bold pb-1 block">
+              <label
+                htmlFor="weight"
+                className="text-slate-600 text-lg font-bold pb-1 block"
+              >
                 Weight
               </label>
               <input
-                type="text"
+                type="number"
                 id="weight"
                 name="weight"
                 placeholder="Enter your weight..."
@@ -239,14 +232,16 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="gender" className="text-slate-600 text-lg font-bold pb-1">
+            <p
+              htmlFor="gender"
+              className="text-slate-600 text-lg font-bold pb-1"
+            >
               Gender{" "}
             </p>
             <select
               type="text"
               id="gender"
               name="gender"
-
               value={form.gender}
               onChange={handleChange}
               className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
@@ -258,14 +253,12 @@ function FormPage() {
             </select>
           </div>
           <br />
-
         </div>
       </div>
-
     );
   };
 
-  const step2 = () => { 
+  const step2 = () => {
     return (
       <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-4 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
@@ -273,7 +266,10 @@ function FormPage() {
             <strong>General Information</strong>
           </h2>
           <div className="inputgroup pb-8">
-            <p htmlFor="brings" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="brings"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               So, what brings you here?{" "}
             </p>
             <select
@@ -287,7 +283,9 @@ function FormPage() {
             >
               <option value="">Select a type</option>
               <option value="Losing weight">Losing weight</option>
-              <option value="Gaining muscle and losing fat">Gaining muscle and losing fat</option>
+              <option value="Gaining muscle and losing fat">
+                Gaining muscle and losing fat
+              </option>
               <option value="Gaining muscle, losing fat is secondary">
                 Gaining muscle, losing fat is secondary
               </option>
@@ -298,7 +296,10 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="goals" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="goals"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               What are your goals ?{" "}
             </p>
             <select
@@ -311,7 +312,9 @@ function FormPage() {
               className="border placeholder-slate-600 bg-slate-200 text-black py-1 px-2 rounded w-[300px] lg:w-[38.5rem]"
             >
               <option value="">Select a type</option>
-              <option value="to live a healthy life">To live a healthy Life</option>
+              <option value="to live a healthy life">
+                To live a healthy Life
+              </option>
               <option value="to look in shape">To look in shape</option>
               <option value="to overcome on going chronic disease">
                 To overcome ongoing chronic disease
@@ -321,7 +324,10 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="achieve" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="achieve"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How motivated are you to achieve your goal ?{" "}
             </p>
             <select
@@ -364,7 +370,10 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="stops" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="stops"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               What stops you from achieving your goals ?{" "}
             </p>
             <select
@@ -383,24 +392,23 @@ function FormPage() {
               <option value="Others">Others</option>
             </select>
           </div>
-
-
         </form>
       </div>
-
     );
   };
 
   const step3 = () => {
     return (
-
       <div className="bg-white lg:w-[700px] py-10 px-8 z-10 mx-4 shadow-2xl rounded-xl flex justify-center">
         <form className="text-xl pt-7" onSubmit={handleSubmit}>
           <h2 className="pb-4">
             <strong>Nutrition Based Information</strong>
           </h2>
           <div className="inputgroup pb-8">
-            <p htmlFor="servings" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="servings"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How many servings of fruits and vegetables do you typically eat
               each day ?{" "}
             </p>
@@ -422,7 +430,10 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="grains" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="grains"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How often do you include whole grains in your diet ?{" "}
             </p>
             <select
@@ -437,13 +448,18 @@ function FormPage() {
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
               <option value="Occasionally">Occasionally</option>
-              <option value="Several times per week">Several times per week</option>
+              <option value="Several times per week">
+                Several times per week
+              </option>
               <option value="Daily">Daily</option>
             </select>
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="chicken" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="chicken"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How often do you consume sources of lean protein (e.g., chicken
               breast, fish, tofu) ?{" "}
             </p>
@@ -459,13 +475,18 @@ function FormPage() {
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
               <option value="Occasionally">Occasionally</option>
-              <option value="Several times per week">Several times per week</option>
+              <option value="Several times per week">
+                Several times per week
+              </option>
               <option value="Daily">Daily</option>
             </select>
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="drink" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="drink"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How often do you drink water throughout the day ?{" "}
             </p>
             <select
@@ -480,13 +501,18 @@ function FormPage() {
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
               <option value="Occasionally">Occasionally</option>
-              <option value="Several times per week">Several times per week</option>
+              <option value="Several times per week">
+                Several times per week
+              </option>
               <option value="Daily">Daily</option>
             </select>
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="sweets" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="sweets"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               How often do you eat foods high in added sugars (e.g., sweets,
               sugary drinks) ?{" "}
             </p>
@@ -502,16 +528,15 @@ function FormPage() {
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
               <option value="Occasionally">Occasionally</option>
-              <option value="Several times per week">Several times per week</option>
+              <option value="Several times per week">
+                Several times per week
+              </option>
               <option value="Daily">Daily</option>
             </select>
           </div>
           <br />
-
-
         </form>
       </div>
-
     );
   };
 
@@ -523,7 +548,10 @@ function FormPage() {
             <strong>Medical History Information</strong>
           </h2>
           <div className="inputgroup pb-8">
-            <p htmlFor="medical" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="medical"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               Any current Medical conditions ?{" "}
             </p>
             <select
@@ -542,7 +570,10 @@ function FormPage() {
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="chronic" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="chronic"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               Any chronic medical condition ?{" "}
             </p>
             <select
@@ -576,13 +607,18 @@ function FormPage() {
               <option value="">Select a type</option>
               <option value="Rarely or never">Rarely or never</option>
               <option value="Occasionally">Occasionally</option>
-              <option value="Several times per week">Several times per week</option>
+              <option value="Several times per week">
+                Several times per week
+              </option>
               <option value="Daily">Daily</option>
             </select>
           </div>
 
           <div className="inputgroup pb-8">
-            <p htmlFor="physical" className="text-slate-600 font-bold text-lg pb-1">
+            <p
+              htmlFor="physical"
+              className="text-slate-600 font-bold text-lg pb-1"
+            >
               {" "}
               How would you rate your overall level of physical activity ?{" "}
             </p>
@@ -611,8 +647,6 @@ function FormPage() {
               </option>
             </select>
           </div>
-
-
         </form>
         {loading && <Loader />}
       </div>
@@ -621,9 +655,9 @@ function FormPage() {
 
   const [formno, setformno] = useState(1);
 
-  useEffect(()=>{
+  useEffect(() => {
     setCurrentStep(formno);
-   },[formno])
+  }, [formno]);
 
   const selectForm = () => {
     switch (formno) {
@@ -641,12 +675,22 @@ function FormPage() {
   };
 
   const Stepper = () => {
-    const steps = ["Personal Info.", "General Info.", "Nutrition Based", "Medical History"]
-   
+    const steps = [
+      "Personal Info.",
+      "General Info.",
+      "Nutrition Based",
+      "Medical History",
+    ];
+
     return (
       <div className="hidden lg:block lg:flex justify-between">
         {steps?.map((step, i) => (
-          <div key={i} className={`step-item ${currentStep === i + 1 && "active"} ${i+1 < currentStep && "complete"}`}>
+          <div
+            key={i}
+            className={`step-item ${currentStep === i + 1 && "active"} ${
+              i + 1 < currentStep && "complete"
+            }`}
+          >
             <div className="step">{i + 1}</div>
             <p className="text-gray-500 text-center text-lg">{step}</p>
           </div>
@@ -657,62 +701,64 @@ function FormPage() {
 
   return (
     <>
-<Navbar/>
+      <Navbar />
       <div className="container mx-auto  bg-peach pb-9 flex justify-center ">
+        {!formSubmitted ? (
+          <div>
+            <h1 className="text-center text-[#e15f15] font-semibold text-3xl py-10 font-amsterdam mx-4">
+              Enquiry Form
+            </h1>
+            <Stepper />
 
-        {!formSubmitted ? <div>
-
-          <h1 className="text-center text-[#e15f15] font-semibold text-3xl py-10 font-amsterdam mx-4">
-            Enquiry Form
-          </h1>
-          <Stepper />
-
-          {selectForm()}
-          {formno == 1 ? <div className="flex justify-center mt-8 mx-4">
-            <button
-              onClick={() =>  setformno(formno + 1) }
-              className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
-            >
-              Next
-            </button>
-          </div> : formno == 4 ? <div className="flex justify-center gap-4 mt-8 mx-8">
-            <button
-              onClick={() => setformno(formno - 1)}
-              className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
-            >
-              Prev
-            </button>
-            <button
-              onClick={handleSubmit}
-              className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
-            >
-              Submit
-            </button>
-          </div> :
-            <div className="flex justify-center gap-4 mt-8 mx-4">
-              <button
-                onClick={() => setformno(formno - 1)}
-                className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
-              >
-                Prev
-              </button>
-              <button
-                onClick={() => setformno(formno + 1)}
-                className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
-              >
-                Next
-              </button>
-            </div>
-
-          }
-        </div> :
+            {selectForm()}
+            {formno == 1 ? (
+              <div className="flex justify-center mt-8 mx-4">
+                <button
+                  onClick={() => setformno(formno + 1)}
+                  className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
+                >
+                  Next
+                </button>
+              </div>
+            ) : formno == 4 ? (
+              <div className="flex justify-center gap-4 mt-8 mx-8">
+                <button
+                  onClick={() => setformno(formno - 1)}
+                  className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
+                >
+                  Prev
+                </button>
+                <button
+                  onClick={handleSubmit}
+                  className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
+                >
+                  Submit
+                </button>
+              </div>
+            ) : (
+              <div className="flex justify-center gap-4 mt-8 mx-4">
+                <button
+                  onClick={() => setformno(formno - 1)}
+                  className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
+                >
+                  Prev
+                </button>
+                <button
+                  onClick={() => setformno(formno + 1)}
+                  className="bg-orange-500 hover:bg-[#fdeacc] text-white hover:text-orange-500 border-2 border-orange-500 font-bold py-2 mt-3 px-4 rounded-xl w-full"
+                >
+                  Next
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
           <ThankYouCard />
-        }
-
+        )}
       </div>
-<Footer/>
+      <Footer />
     </>
   );
-};
+}
 
 export default FormPage;
