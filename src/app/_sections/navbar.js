@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+
+
+
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +19,7 @@ export default function Navbar() {
     <div className='lg:bg-peach'>
       <section className="container mx-auto">
         <nav className="bg-peach relative py-4 px-5">
-          <div className="flex items-center text-xl justify-between lg:grid lg:grid-cols-12 ">
+          <div className="flex items-center text-xl justify-between lg:grid lg:grid-cols-13 ">
             {/* Logo */}
             <div className='col-span-1'>
               <img src="/logo.png" height={100} width={100} alt="Logo" />
@@ -62,6 +65,17 @@ export default function Navbar() {
               >
                 Contact
               </Link>
+
+              <Link
+                href="/booktestform"
+                className={`block text-gray-500 font-bold mb-2 ${pathname === '/booktestform'
+                    ? 'active'
+                    : 'hover:text-orange-500 hover:underline'
+                  }`}
+              >
+                Book Medical Test
+              </Link>
+
               <Link
                 href="/privacy-policy"
                 className={`block text-gray-500 font-bold mb-2 ${pathname === '/privacy-policy'
