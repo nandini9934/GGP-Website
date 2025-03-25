@@ -5,7 +5,11 @@ export async function POST(req) {
   try {
     const razorpaySecret = process.env.RAZORPAY_WEBHOOK_SECRET;
     if (!razorpaySecret) {
-      return NextResponse.json({ error: "Webhook secret not configured" }, { status: 500 });
+      console.log("secret me ftt rha hai");
+      return NextResponse.json(
+        { error: "Webhook secret not configured" },
+        { status: 500 }
+      );
     }
 
     const webhookBody = await req.text();
@@ -52,9 +56,11 @@ export async function POST(req) {
     }
 
     return NextResponse.json({ success: true });
-
   } catch (error) {
     console.error("🚨 Webhook Error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }
