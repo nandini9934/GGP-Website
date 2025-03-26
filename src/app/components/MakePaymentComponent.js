@@ -10,9 +10,9 @@ const MakePaymentComponent = () => {
       alert("❌ Amount must be at least ₹1");
       return;
     }
-    
+
     setError(""); // Reset error if valid
-    
+
     const res = await initializeRazorpay();
     if (!res) {
       alert("❌ Razorpay SDK Failed to Load");
@@ -39,14 +39,13 @@ const MakePaymentComponent = () => {
     }
 
     var options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       order_id: data.orderId,
       amount: data.amount,
       currency: "INR",
       name: "Good Gut Project",
       description: "Thank you for your test donation",
       handler: function (response) {
-        
         window.location.href = `/payment-success?payment_id=${response.razorpay_payment_id}`;
       },
       prefill: {
@@ -78,20 +77,20 @@ const MakePaymentComponent = () => {
 
   return (
     <div>
-      <input 
-        type="text" 
-        value={amount} 
-        onChange={(e) => setAmount(Number(e.target.value))} 
+      <input
+        type="text"
+        value={amount}
+        onChange={(e) => setAmount(Number(e.target.value))}
         placeholder="Enter amount"
         className='w-60 border-2 border-black my-2 mx-2 px-2'
-      /><br/>
-      <input 
-        type="text" 
-        value={couponCode} 
-        onChange={(e) => setCouponCode(e.target.value)} 
+      /><br />
+      <input
+        type="text"
+        value={couponCode}
+        onChange={(e) => setCouponCode(e.target.value)}
         placeholder="Enter coupon code"
         className='w-60 border-2 border-black my-2 mx-2 px-2'
-      /><br/>
+      /><br />
       <button onClick={makePayment} className='w-60 border-2 border-black bg-orange-400 mx-2 px-2'>Pay Now</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
