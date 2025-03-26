@@ -1,9 +1,19 @@
 //pages->payment.js
 "use client";
 import React from 'react'
-import MakePaymentComponent from '@/app/components/MakePaymentComponent'
+import MakePaymentComponent from '@/app/components/MakePaymentComponent';
+import { Suspense } from "react";
 
-const payment = () => {
+const PaymentSus = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Payment />
+    </Suspense>
+  );
+};
+
+
+const Payment = () => {
 
   return (
     <div>
@@ -13,4 +23,4 @@ const payment = () => {
   )
 }
 
-export default payment
+export default PaymentSus
