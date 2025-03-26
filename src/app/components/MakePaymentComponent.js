@@ -4,7 +4,6 @@ const MakePaymentComponent = () => {
   const [couponCode, setCouponCode] = useState('');
   const [amount, setAmount] = useState(100); // Default ₹100
   const [error, setError] = useState('');
-
   const makePayment = async () => {
     if (amount < 1) {
       alert("❌ Amount must be at least ₹1");
