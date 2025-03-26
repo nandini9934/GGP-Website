@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+"use client";
+
+import React, { useState ,useEffect} from 'react';
+import { useSearchParams } from "next/navigation";
+import axios from "axios";
 
 const MakePaymentComponent = () => {
+  const searchParams = useSearchParams();
+  const userID = searchParams.get("userid");
+  const type = searchParams.get("type");
   const [couponCode, setCouponCode] = useState('');
   const [amount, setAmount] = useState(100); // Default ₹100
   const [error, setError] = useState('');
+  const [isLoading ,setIsLoading] = useState(false);
+
+  useEffect(()=>
+  {
+    setAmount(type === 'M' ? 1 : 2)
+  },[type])
   const makePayment = async () => {
     if (amount < 1) {
       alert("❌ Amount must be at least ₹1");
       return;
     }
-
+    
     setError(""); // Reset error if valid
 
     const res = await initializeRazorpay();
@@ -40,12 +53,12 @@ const MakePaymentComponent = () => {
     var options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       order_id: data.orderId,
-      amount: data.amount,
+      amount:type === 'M' ? 1 : 2,
       currency: "INR",
       name: "Good Gut Project",
       description: "Thank you for your test donation",
       handler: function (response) {
-        window.location.href = `/payment-success?payment_id=${response.razorpay_payment_id}`;
+        eventOnPaymentSuccess(response.razorpay_payment_id);
       },
       prefill: {
         name: "Akash Kushwaha",
@@ -57,6 +70,22 @@ const MakePaymentComponent = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
+
+const eventOnPaymentSuccess =(paymentID)=>
+{
+  setIsLoading(true);
+  axios
+  .post("/api/successpayment", { userid:userID })
+  .then(function (response) {
+    console.log(response);
+    setIsLoading(false);
+    window.location.href = `/payment-success?payment_id=${paymentID}`;
+  })
+  .catch(function (error) {
+    setIsLoading(false);
+    alert("Something went wrong!!")
+  });
+}
 
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
@@ -76,13 +105,15 @@ const MakePaymentComponent = () => {
 
   return (
     <div>
-      <input
+      {/* <input
         type="text"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
         placeholder="Enter amount"
         className='w-60 border-2 border-black my-2 mx-2 px-2'
-      /><br />
+      /> */}
+    {!isLoading ? <> <h3>Please Pay {type === "M" ? 2000 : 2500} to book your Medical test</h3>
+      <br />
       <input
         type="text"
         value={couponCode}
@@ -91,7 +122,7 @@ const MakePaymentComponent = () => {
         className='w-60 border-2 border-black my-2 mx-2 px-2'
       /><br />
       <button onClick={makePayment} className='w-60 border-2 border-black bg-orange-400 mx-2 px-2'>Pay Now</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>} </>: <h1>Redirecting to Acknowledgement Page</h1>} 
     </div>
   );
 }

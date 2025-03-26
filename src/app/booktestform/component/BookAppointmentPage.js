@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../_sections/navbar";
 import Footer from "../../_sections/footer";
+import axios from "axios";
 
 function BookAppointmentPage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ function BookAppointmentPage() {
   });
 
   const [loading, setLoading] = useState(false);
-
+  const [userID,setUserID ] = useState("");
   // Handle Input Change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -54,9 +55,30 @@ function BookAppointmentPage() {
       // Store form details in session storage before redirection
       sessionStorage.setItem("appointmentData", JSON.stringify(form));
 
+      axios
+        .post("/api/bookingrecord", { 
+          name:form.name,
+        age:form.age,
+        gender:form.gender,
+        address:form.address,
+        pincode:form.pincode,
+        email:form.email,
+        contact:form.contact,
+        appointmentTime:form.appointmentTime,
+        date:form.date,
+        })
+        .then(function (response) {
+          const type = form.gender === "Male" ? "M" : "F"
+          const razorpayPaymentPageURL = "/payments?userid=" + response.data?.userid +"&type=" + type//"https://rzp.io/rzp/8AtzhSV";
+          router.push(razorpayPaymentPageURL);
+        })
+        .catch(function (error) {
+          alert("Something Went Wrong !")
+        });
+
+     // console.log(data);
       // Redirect to Razorpay payment page
-      const razorpayPaymentPageURL = "https://rzp.io/rzp/8AtzhSV";
-      router.push(razorpayPaymentPageURL);
+      
     } catch (error) {
       console.error("Error processing payment:", error);
       alert("Payment failed. Please try again.");
@@ -75,7 +97,6 @@ function BookAppointmentPage() {
             {[
               { label: "Name", name: "name", type: "text" },
               { label: "Age", name: "age", type: "number" },
-              { label: "Gender", name: "gender", type: "text" },
               { label: "Address", name: "address", type: "text" },
               { label: "Pincode", name: "pincode", type: "text" },
               { label: "Email", name: "email", type: "email" },
@@ -95,6 +116,19 @@ function BookAppointmentPage() {
                 />
               </div>
             ))}
+             <label className="block font-medium">Gender</label>
+            <select
+              type="text"
+              id="gender"
+              name="gender"
+              value={form.gender}
+              onChange={handleChange}
+              className="placeholder-slate-600 text-black py-1 pb-2 px-2 rounded"
+            >
+              <option value="">Select your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
             <button
               type="submit"
               className="bg-orange-500 text-white px-4 py-2 rounded-lg w-full"
