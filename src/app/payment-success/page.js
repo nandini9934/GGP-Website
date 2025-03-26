@@ -1,11 +1,18 @@
-"use client";
-
-import React from 'react';
-import { useSearchParams } from 'next/navigation';
+"use client"; 
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
 const PaymentSuccess = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
+  );
+};
+
+const PaymentSuccessContent = () => {
   const searchParams = useSearchParams();
-  const paymentId = searchParams.get('payment_id');
+  const paymentId = searchParams.get("payment_id");
 
   return (
     <div style={{ textAlign: "center", padding: "50px" }}>
