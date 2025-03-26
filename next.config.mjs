@@ -2,8 +2,9 @@
 const nextConfig = {
     env: {
         MONGODB_URI: "mongodb+srv://organikkanpur:d6fpbA3irM6wQgSC@customerdb.mvlkwaq.mongodb.net/customerDB",
-        RAZORPAY_KEY_ID: "rzp_live_o4DfwC4wYMqvkv",
-        RAZORPAY_KEY_SECRET: "U2S8EoN42yMmxxAkjqeCzmFG"
+        RAZORPAY_KEY_ID: "rzp_live_CsSzI7vjFe2QjR",
+        RAZORPAY_KEY_SECRET: "eyBhWUe0eqSF8aWGMHbZExDG",
+        NEXT_PUBLIC_RAZORPAY_KEY_ID: "rzp_live_CsSzI7vjFe2QjR"
     },
     reactStrictMode: true,
     eslint: {

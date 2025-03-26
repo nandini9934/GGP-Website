@@ -2,59 +2,62 @@ import React, { useState } from 'react';
 
 const MakePaymentComponent = () => {
   const [couponCode, setCouponCode] = useState('');
-  const [taxAmt, setTaxAmt] = useState(100); // Example amount
-  const [error, setError] = useState(''); // State for error message
+  const [amount, setAmount] = useState(100); // Default ₹100
+  const [error, setError] = useState('');
 
   const makePayment = async () => {
-    const res = await initializeRazorpay();
-    if (!res) {
-      alert("Razorpay SDK Failed to load");
+    if (amount < 1) {
+      alert("❌ Amount must be at least ₹1");
       return;
     }
     
-    // Make API call to the serverless API with taxAmt and couponCode
-    const data = await fetch("/api/razorpay", {
+    setError(""); // Reset error if valid
+    
+    const res = await initializeRazorpay();
+    if (!res) {
+      alert("❌ Razorpay SDK Failed to Load");
+      return;
+    }
+
+    // Make API call to the serverless API with amount and couponCode
+    const data = await fetch("/api/razorpays", {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        taxAmt,
-        couponCode,
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount, couponCode }),
     }).then((t) => t.json());
 
-    // Check for a valid payment response or error message
-    if (data.id) {
-      var options = {
-        key: process.env.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-        name: "Good Gut Project",
-        currency: data.currency,
-        amount: data.amount,
-        order_id: data.id,
-        description: "Thank you for your test donation",
-        image: "logo1.png",
-        handler: function (response) {
-          alert("Razorpay Response: " + response.razorpay_payment_id);
-        },
-        prefill: {
-          name: "Akash Kushwaha",
-          email: "Organikkanpur.in",
-          contact: '7521816092',
-        },
-      };
+    console.log("✅ Razorpay Order Response:", data);
 
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
-      setError(''); // Clear any previous error message
-    } else {
-      // Display error message if coupon code is not valid
-      if (data.message) {
-        setError(data.message); // Show error message from server
-      } else {
-        setError('Payment failed'); // Fallback error message
-      }
+    if (data.error) {
+      alert(data.error);
+      return;
     }
+
+    // Show discount message
+    if (data.discount) {
+      alert(`🎉 Coupon applied! You saved ₹${data.discount}`);
+    }
+
+    var options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+      order_id: data.orderId,
+      amount: data.amount,
+      currency: "INR",
+      name: "Good Gut Project",
+      description: "Thank you for your test donation",
+      handler: function (response) {
+        
+        window.location.href = `/payment-success?payment_id=${response.razorpay_payment_id}`;
+      },
+      prefill: {
+        name: "Akash Kushwaha",
+        email: "Organikkanpur.in",
+        contact: "7521816092",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
   };
 
   const initializeRazorpay = () => {
@@ -77,12 +80,20 @@ const MakePaymentComponent = () => {
     <div>
       <input 
         type="text" 
+        value={amount} 
+        onChange={(e) => setAmount(Number(e.target.value))} 
+        placeholder="Enter amount"
+        className='w-60 border-2 border-black my-2 mx-2 px-2'
+      /><br/>
+      <input 
+        type="text" 
         value={couponCode} 
         onChange={(e) => setCouponCode(e.target.value)} 
         placeholder="Enter coupon code"
-      />
-      <button onClick={makePayment}>Pay Now</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>} {/* Show error message */}
+        className='w-60 border-2 border-black my-2 mx-2 px-2'
+      /><br/>
+      <button onClick={makePayment} className='w-60 border-2 border-black bg-orange-400 mx-2 px-2'>Pay Now</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 }
