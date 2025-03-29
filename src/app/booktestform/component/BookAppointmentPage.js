@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../_sections/navbar";
 import Footer from "../../_sections/footer";
@@ -19,9 +19,15 @@ function BookAppointmentPage() {
     appointmentTime: "",
     date: "",
   });
-
+const [amount,setAmount] = useState(2500);
   const [loading, setLoading] = useState(false);
   const [userID,setUserID ] = useState("");
+
+  useEffect(()=>{
+    const newAmount = form.gender === "M" ? 1 : 2
+    setAmount(newAmount)
+  },[form.gender])
+
   // Handle Input Change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -66,10 +72,11 @@ function BookAppointmentPage() {
         contact:form.contact,
         appointmentTime:form.appointmentTime,
         date:form.date,
+        amount : amount
         })
         .then(function (response) {
-          const type = form.gender === "Male" ? "M" : "F"
-          const razorpayPaymentPageURL = "/payments?userid=" + response.data?.userid +"&type=" + type//"https://rzp.io/rzp/8AtzhSV";
+
+          const razorpayPaymentPageURL = "/payments?userid=" + response.data?.userid //"https://rzp.io/rzp/8AtzhSV";
           router.push(razorpayPaymentPageURL);
         })
         .catch(function (error) {

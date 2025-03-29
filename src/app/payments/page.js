@@ -17,7 +17,6 @@ const Payment = () => {
 
   return (
     <div>
-        <h4>Payment Page</h4>
         <MakePaymentComponent/>
     </div>
   )

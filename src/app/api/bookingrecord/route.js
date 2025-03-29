@@ -16,6 +16,7 @@ export async function POST(req) {
         contact,
         appointmentTime,
         date,
+        amount
     } = await req.json();
 
     await dbConnect();
@@ -32,6 +33,7 @@ export async function POST(req) {
         paymentStatus: "P",
         paymentId: "",
         mailStatus: "P",
+        amount
     });
 
    // await sendEmail(name, phoneno, goals, mail);

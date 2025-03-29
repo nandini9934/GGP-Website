@@ -49,6 +49,9 @@ const testdetail = new mongoose.Schema(
       type: String,
 
     },
+    amount :{
+      type:Number
+    }
   },
   { timestamps: true }
 );

@@ -8,11 +8,16 @@ export async function POST(req) {
   try {
     
     const {
-        userid
+        userid,
+        paymentID
     } = await req.json();
     console.log(userid)
     await dbConnect(); // Connect to DB
-
+    await testdetail.findByIdAndUpdate(
+      userid, 
+      { paymentStatus: "C",paymentId:paymentID }, // Default to "Sent" if not provided
+      { new: true } // Return the updated document
+    );
     // Fetch user data by userid
     const userData = await testdetail.findById(userid);
     console.log(userData);

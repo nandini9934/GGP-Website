@@ -1,37 +1,39 @@
 "use client";
 
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 
 const MakePaymentComponent = () => {
   const searchParams = useSearchParams();
   const userID = searchParams.get("userid");
-  const type = searchParams.get("type");
   const [couponCode, setCouponCode] = useState('');
-  const [amount, setAmount] = useState(100); // Default ₹100
+  const [amount, setAmount] = useState(2);
   const [error, setError] = useState('');
-  const [isLoading ,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // ✅ Success State
+  const [paymentID, setPaymentID] = useState("");
+  const [isuserValid,setIsUserValid] = useState(true);// ✅ Store Payment ID
+  //const [paymentStatus,setPaymentStatus] = useState(false);
+  useEffect(()=>{
+    console.log("here")
+    validateUser()
+  },[])
 
-  useEffect(()=>
-  {
-    setAmount(type === 'M' ? 1 : 2)
-  },[type])
   const makePayment = async () => {
     if (amount < 1) {
       alert("❌ Amount must be at least ₹1");
       return;
     }
-    
-    setError(""); // Reset error if valid
+
+    setError("");
 
     const res = await initializeRazorpay();
     if (!res) {
-      alert("❌ Razorpay SDK Failed to Load");
+      alert("❌ Payment system is not loading. Please check your internet connection or try again later.");
       return;
     }
 
-    // Make API call to the serverless API with amount and couponCode
     const data = await fetch("/api/razorpays", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -45,7 +47,6 @@ const MakePaymentComponent = () => {
       return;
     }
 
-    // Show discount message
     if (data.discount) {
       alert(`🎉 Coupon applied! You saved ₹${data.discount}`);
     }
@@ -53,7 +54,7 @@ const MakePaymentComponent = () => {
     var options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       order_id: data.orderId,
-      amount:type === 'M' ? 1 : 2,
+      amount: data.amount,
       currency: "INR",
       name: "Good Gut Project",
       description: "Thank you for your test donation",
@@ -71,58 +72,102 @@ const MakePaymentComponent = () => {
     paymentObject.open();
   };
 
-const eventOnPaymentSuccess =(paymentID)=>
-{
-  setIsLoading(true);
-  axios
-  .post("/api/successpayment", { userid:userID })
-  .then(function (response) {
-    console.log(response);
-    setIsLoading(false);
-    window.location.href = `/payment-success?payment_id=${paymentID}`;
-  })
-  .catch(function (error) {
-    setIsLoading(false);
-    alert("Something went wrong!!")
-  });
-}
+  const eventOnPaymentSuccess = (paymentID) => {
+    setIsLoading(true);
+    axios.post("/api/successpayment", { userid: userID,paymentID:paymentID })
+      .then(function (response) {
+        console.log(response);
+        setIsLoading(false);
+        setIsSuccess(true); // ✅ Show success message inside the same box
+        setPaymentID(paymentID); // ✅ Store Payment ID
+      })
+      .catch(function (error) {
+        setIsLoading(false);
+        alert("Something went wrong!!");
+      });
+  };
+
+  const validateUser =()=>
+    {
+      setIsLoading(true);
+      axios.post("/api/validateuser", { userid: userID })
+        .then(function (response) {
+          console.log(response);
+          const {amount,paymentStatus,isValidUser} = response.data?.userInfo;
+          setIsLoading(false);
+          setAmount(amount);
+          setIsSuccess(paymentStatus); // ✅ Success State
+          setIsUserValid(isValidUser);
+          
+        })
+        .catch(function (error) {
+          setIsLoading(false);
+          alert("Something went wrong!!");
+        });
+    };
 
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
 
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
 
       document.body.appendChild(script);
     });
   };
 
   return (
-    <div>
-      {/* <input
-        type="text"
-        value={amount}
-        onChange={(e) => setAmount(Number(e.target.value))}
-        placeholder="Enter amount"
-        className='w-60 border-2 border-black my-2 mx-2 px-2'
-      /> */}
-    {!isLoading ? <> <h3>Please Pay {type === "M" ? 2000 : 2500} to book your Medical test</h3>
-      <br />
-      <input
-        type="text"
-        value={couponCode}
-        onChange={(e) => setCouponCode(e.target.value)}
-        placeholder="Enter coupon code"
-        className='w-60 border-2 border-black my-2 mx-2 px-2'
-      /><br />
-      <button onClick={makePayment} className='w-60 border-2 border-black bg-orange-400 mx-2 px-2'>Pay Now</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>} </>: <h1>Redirecting to Acknowledgement Page</h1>} 
+    <div className="flex justify-center items-center min-h-screen bg-peach">
+      <div className="py-12 px-8 w-fit flex flex-col items-center bg-white rounded-lg shadow-lg">
+        {/* ✅ Show Payment Page If Not Success */}
+        {isuserValid ? 
+        !isSuccess ? (
+          <>
+            {!isLoading ? (
+              <>
+                <h4 className="pb-5 text-2xl font-semibold">Payment Page</h4>
+                <h3 className="text-center">
+                  Please pay {amount } Rs. to book your Medical Test
+                </h3>
+                <br />
+                <input
+                  type="text"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  placeholder="Enter coupon code"
+                  className="w-64 border-2 border-gray-300 py-2 px-2 rounded-xl"
+                />
+                <br />
+                <button
+                  onClick={makePayment}
+                  className="border-2 bg-orange-600 px-8 py-3 rounded-xl text-white font-bold"
+                >
+                  Pay Now
+                </button>
+                {error && <p className="text-red-600">{error}</p>}
+              </>
+            ) : (
+              // ✅ Show Loader Instead of "Redirecting..."
+              <div className="flex flex-col items-center">
+                <div className="w-12 h-12 border-4 border-gray-300 border-t-orange-500 rounded-full animate-spin"></div>
+                <h1 className="mt-4 text-gray-700">Processing Payment...</h1>
+              </div>
+            )}
+          </>
+        ) : 
+        (
+          // ✅ Show Success Message Inside Same Box
+          <div className="text-center">
+            <h1 className="text-green-600 text-2xl font-bold">🎉 Payment Successful!</h1>
+            <p className="mt-2">Thank you for your payment.</p>
+            <a href="/" className="text-blue-600 mt-4 inline-block">
+              Go to Home
+            </a>
+          </div>
+        ) : <h3>Invalid User</h3>}
+      </div>
     </div>
   );
 }
