@@ -35,8 +35,10 @@ function BookAppointmentPage() {
   };
 
   const validatePinCode = (pincode) => {
-    console.log("focus out");
-    return validPincodes.some((x) => x === pincode);
+    const isValidPincode = validPincodes.some((x) => x === pincode);
+    console.log(isValidPincode);
+
+    return isValidPincode;
   };
   // Validate Form
   const validateForm = () => {
@@ -58,7 +60,7 @@ function BookAppointmentPage() {
       alert("Invalid Pincode. Must be 6 digits.");
       return false;
     }
-    if (validatePinCode(form.pincode)) {
+    if (!validatePinCode(form.pincode)) {
       alert("This pin code is not serviceable. Please try other");
       return false;
     }
@@ -165,7 +167,7 @@ function BookAppointmentPage() {
               className="bg-orange-500 text-white px-4 py-2 rounded-lg w-full"
               disabled={loading}
             >
-              {loading ? "Processing..." : "Book & Pay ₹2500"}
+              {loading ? "Processing..." : "Book & Pay"}
             </button>
           </form>
         </div>
