@@ -26,7 +26,7 @@ function BookAppointmentPage() {
   const [userID, setUserID] = useState("");
 
   useEffect(() => {
-    const newAmount = form.gender === "Male" ? 1 : 2;
+    const newAmount = form.gender === "Male" ? 1999 : 2499;
     setAmount(newAmount);
   }, [form.gender]);
 
@@ -69,6 +69,10 @@ function BookAppointmentPage() {
       alert("Invalid Contact Number. Must be 10 digits.");
       return false;
     }
+    if (new Date(form.date) < new Date()) {
+      alert("Appointment date can not be less than today's date.");
+      return false;
+    }
     return true;
   };
 
@@ -103,6 +107,7 @@ function BookAppointmentPage() {
           router.push(razorpayPaymentPageURL);
         })
         .catch(function (error) {
+          setLoading(false);
           alert("Something Went Wrong !");
         });
 
@@ -116,7 +121,6 @@ function BookAppointmentPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-orange-100">
-      {loading && <Loader />}
       <Navbar />
       <div className="flex justify-center items-center flex-grow">
         <div className="bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
