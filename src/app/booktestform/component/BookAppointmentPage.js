@@ -1,10 +1,11 @@
 "use client";
 
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../../_sections/navbar";
 import Footer from "../../_sections/footer";
 import axios from "axios";
+import { validPincodes } from "@/common/commonConstant";
 
 function BookAppointmentPage() {
   const router = useRouter();
@@ -19,28 +20,46 @@ function BookAppointmentPage() {
     appointmentTime: "",
     date: "",
   });
-const [amount,setAmount] = useState(2500);
+  const [amount, setAmount] = useState(2500);
   const [loading, setLoading] = useState(false);
-  const [userID,setUserID ] = useState("");
+  const [userID, setUserID] = useState("");
 
-  useEffect(()=>{
-    const newAmount = form.gender === "M" ? 1 : 2
-    setAmount(newAmount)
-  },[form.gender])
+  useEffect(() => {
+    const newAmount = form.gender === "Male" ? 1 : 2;
+    setAmount(newAmount);
+  }, [form.gender]);
 
   // Handle Input Change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const validatePinCode = (pincode) => {
+    console.log("focus out");
+    return validPincodes.some((x) => x === pincode);
+  };
   // Validate Form
   const validateForm = () => {
-    if (!form.name || !form.age || !form.gender || !form.address || !form.pincode || !form.email || !form.contact || !form.appointmentTime || !form.date) {
+    if (
+      !form.name ||
+      !form.age ||
+      !form.gender ||
+      !form.address ||
+      !form.pincode ||
+      !form.email ||
+      !form.contact ||
+      !form.appointmentTime ||
+      !form.date
+    ) {
       alert("Please fill out all fields.");
       return false;
     }
     if (!/^\d{6}$/.test(form.pincode)) {
       alert("Invalid Pincode. Must be 6 digits.");
+      return false;
+    }
+    if (validatePinCode(form.pincode)) {
+      alert("This pin code is not serviceable. Please try other");
       return false;
     }
     if (!/^\d{10}$/.test(form.contact)) {
@@ -62,30 +81,29 @@ const [amount,setAmount] = useState(2500);
       sessionStorage.setItem("appointmentData", JSON.stringify(form));
 
       axios
-        .post("/api/bookingrecord", { 
-          name:form.name,
-        age:form.age,
-        gender:form.gender,
-        address:form.address,
-        pincode:form.pincode,
-        email:form.email,
-        contact:form.contact,
-        appointmentTime:form.appointmentTime,
-        date:form.date,
-        amount : amount
+        .post("/api/bookingrecord", {
+          name: form.name,
+          age: form.age,
+          gender: form.gender,
+          address: form.address,
+          pincode: form.pincode,
+          email: form.email,
+          contact: form.contact,
+          appointmentTime: form.appointmentTime,
+          date: form.date,
+          amount: amount,
         })
         .then(function (response) {
-
-          const razorpayPaymentPageURL = "/payments?userid=" + response.data?.userid //"https://rzp.io/rzp/8AtzhSV";
+          const razorpayPaymentPageURL =
+            "/payments?userid=" + response.data?.userid; //"https://rzp.io/rzp/8AtzhSV";
           router.push(razorpayPaymentPageURL);
         })
         .catch(function (error) {
-          alert("Something Went Wrong !")
+          alert("Something Went Wrong !");
         });
 
-     // console.log(data);
+      // console.log(data);
       // Redirect to Razorpay payment page
-      
     } catch (error) {
       console.error("Error processing payment:", error);
       alert("Payment failed. Please try again.");
@@ -99,7 +117,9 @@ const [amount,setAmount] = useState(2500);
       <Navbar />
       <div className="flex justify-center items-center flex-grow">
         <div className="bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
-          <h2 className="text-xl font-bold mb-4 text-center">Appointment Form</h2>
+          <h2 className="text-xl font-bold mb-4 text-center">
+            Appointment Form
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             {[
               { label: "Name", name: "name", type: "text" },
@@ -108,7 +128,11 @@ const [amount,setAmount] = useState(2500);
               { label: "Pincode", name: "pincode", type: "text" },
               { label: "Email", name: "email", type: "email" },
               { label: "Contact Number", name: "contact", type: "tel" },
-              { label: "Appointment Time", name: "appointmentTime", type: "time" },
+              {
+                label: "Appointment Time",
+                name: "appointmentTime",
+                type: "time",
+              },
               { label: "Date", name: "date", type: "date" },
             ].map(({ label, name, type }) => (
               <div key={name}>
@@ -123,7 +147,7 @@ const [amount,setAmount] = useState(2500);
                 />
               </div>
             ))}
-             <label className="block font-medium">Gender</label>
+            <label className="block font-medium">Gender</label>
             <select
               type="text"
               id="gender"
