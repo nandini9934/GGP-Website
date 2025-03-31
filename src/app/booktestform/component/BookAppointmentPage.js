@@ -6,6 +6,7 @@ import Navbar from "../../_sections/navbar";
 import Footer from "../../_sections/footer";
 import axios from "axios";
 import { validPincodes } from "@/common/commonConstant";
+import Loader from "@/app/components/Loader";
 
 function BookAppointmentPage() {
   const router = useRouter();
@@ -96,6 +97,7 @@ function BookAppointmentPage() {
           amount: amount,
         })
         .then(function (response) {
+          setLoading(false);
           const razorpayPaymentPageURL =
             "/payments?userid=" + response.data?.userid; //"https://rzp.io/rzp/8AtzhSV";
           router.push(razorpayPaymentPageURL);
@@ -110,12 +112,11 @@ function BookAppointmentPage() {
       console.error("Error processing payment:", error);
       alert("Payment failed. Please try again.");
     }
-
-    setLoading(false);
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-orange-100">
+      {loading && <Loader />}
       <Navbar />
       <div className="flex justify-center items-center flex-grow">
         <div className="bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
