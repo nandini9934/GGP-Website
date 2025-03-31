@@ -6,16 +6,12 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    
-    const {
-        userid,
-        paymentID
-    } = await req.json();
-    console.log(userid)
+    const { userid, paymentID } = await req.json();
+    console.log(userid);
     await dbConnect(); // Connect to DB
     await testdetail.findByIdAndUpdate(
-      userid, 
-      { paymentStatus: "C",paymentId:paymentID }, // Default to "Sent" if not provided
+      userid,
+      { paymentStatus: "C", paymentId: paymentID }, // Default to "Sent" if not provided
       { new: true } // Return the updated document
     );
     // Fetch user data by userid
@@ -23,61 +19,55 @@ export async function POST(req) {
     console.log(userData);
     // If user not found, return 404
     if (!userData) {
-        return Response.json({ error: "User not found" }, { status: 404 });
+      return Response.json({ error: "User not found" }, { status: 404 });
     }
 
-           // Set up Nodemailer
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            host: "smtp.gmail.com",  // Change based on your email provider
-            port: 587,
-            secure: false, // Use your email service
-            auth: {
-                user: "Organikkanpur@gmail.com", // Your email address from .env
-                pass: "rrjvjwgwotnbunox",  // Your email password
-            },
-            
-            tls: {
-                rejectUnauthorized: false, // ✅ Ignore SSL certificate issues
-            }
-        });
+    // Set up Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com", // Change based on your email provider
+      port: 587,
+      secure: false, // Use your email service
+      auth: {
+        user: "Organikkanpur@gmail.com", // Your email address from .env
+        pass: "rrjvjwgwotnbunox", // Your email password
+      },
 
-        
-        // Email options
-        const mailUserOptions = {
-            from: "Organikkanpur@gmail.com", // Sender address
-            to: userData.email, // Recipient address
-            subject: 'Medical Test Booked Good Gut Project',
-            text: `Hello ${userData.name}\n\nThank You for booking test through Good Gut Project \n Your booking date is ${userData.date}\n\nPlease Reply on this mail for further queries`,
-        };
+      tls: {
+        rejectUnauthorized: false, // ✅ Ignore SSL certificate issues
+      },
+    });
 
-        const mailCompanyOptions = {
-            from: "Organikkanpur@gmail.com", // Sender address
-            to: "Kushwahaakash2000@gmail.com,shakya7938@gmail.com", // Recipient address
-            subject: 'Medical Test Booked Good Gut Project',
-            text: `Here are the appointment details for Comprehensive Health Assessment Plan:- \n\nName: ${userData.name}\nage: ${userData.age}\nGender: ${userData.gender}\nContact Number: ${userData.contact}\nAppointment Date: ${userData.date}\nAppointment Time: ${userData.appointmentTime}\nAddress: ${userData.address}\nPin Code: ${userData.pincode} `,
-        };
+    // Email options
+    const mailUserOptions = {
+      from: "Organikkanpur@gmail.com", // Sender address
+      to: userData.email, // Recipient address
+      subject: "Medical Test Booked Good Gut Project",
+      text: `Hello ${userData.name}\n\nThank You for booking test through Good Gut Project \n Your booking date is ${userData.date}\n\nPlease Reply on this mail for further queries`,
+    };
 
-        // Send email
-        await transporter.sendMail(mailUserOptions);
-        await transporter.sendMail(mailCompanyOptions).then(async (res,error)=>
-        {
-            if(res)
-            {
-                await testdetail.findByIdAndUpdate(
-                    userid, 
-                    { mailStatus: "Sent" }, // Default to "Sent" if not provided
-                    { new: true } // Return the updated document
-                  );
-            }
-        })
+    const mailCompanyOptions = {
+      from: "Organikkanpur@gmail.com", // Sender address
+      to: "Kushwahaakash2000@gmail.com,shakya7938@gmail.com,pratik.darji@secondmedic.com", // Recipient address
+      subject: "Medical Test Booked Good Gut Project",
+      text: `Here are the appointment details for Comprehensive Health Assessment Plan:- \n\nName: ${userData.name}\nage: ${userData.age}\nGender: ${userData.gender}\nContact Number: ${userData.contact}\nAppointment Date: ${userData.date}\nAppointment Time: ${userData.appointmentTime}\nAddress: ${userData.address}\nPin Code: ${userData.pincode} `,
+    };
 
-   // await sendEmail(name, phoneno, goals, mail);
+    // Send email
+    await transporter.sendMail(mailUserOptions);
+    await transporter.sendMail(mailCompanyOptions).then(async (res, error) => {
+      if (res) {
+        await testdetail.findByIdAndUpdate(
+          userid,
+          { mailStatus: "Sent" }, // Default to "Sent" if not provided
+          { new: true } // Return the updated document
+        );
+      }
+    });
 
-    return NextResponse.json(
-      { message: "Mail sent to User" },
-      { status: 200 }
-    );
+    // await sendEmail(name, phoneno, goals, mail);
+
+    return NextResponse.json({ message: "Mail sent to User" }, { status: 200 });
   } catch (error) {
     console.log(error.message);
     return NextResponse.json(
