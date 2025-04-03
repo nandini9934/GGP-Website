@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
           <img
             height="1"
             width="1"
-            style="display:none;"
+            style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=641035925350213&ev=PageView&noscript=1"
           />
         </noscript>
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
         {/* <Footer /> */}
 
         {/* Razorpay Script */}
-        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"></Script>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       </body>
     </html>
   );
