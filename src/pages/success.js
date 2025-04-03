@@ -13,7 +13,16 @@ function PaymentSuccess() {
     // Retrieve appointment details from session storage
     const storedData = sessionStorage.getItem("appointmentData");
     if (storedData) {
-      setAppointmentData(JSON.parse(storedData));
+      const parsedData = JSON.parse(storedData);
+      setAppointmentData(parsedData);
+
+      // 🔥 Facebook Pixel Purchase Event Tracking 🔥
+      if (window.fbq) {
+        window.fbq("track", "Purchase", {
+          value: parsedData.price || 0,  // Price (agar hai to)
+          currency: "INR",  // Currency set karein
+        });
+      }
     }
   }, []);
 
