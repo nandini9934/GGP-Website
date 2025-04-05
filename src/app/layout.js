@@ -1,18 +1,31 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { pageview, trackInitiate } from "../tracking"; // Importing tracking functions
 import "./globals.css";
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Good Gut Project - Home',
-  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
-  keywords: ['Good Gut Project', 'Nutrition', 'Gut Health', 'GGP'],
+  title: "Good Gut Project - Home",
+  description: "Welcome to Good Gut Project, your guide to a healthier gut.",
+  keywords: ["Good Gut Project", "Nutrition", "Gut Health", "GGP"],
 };
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Track the initiation event when the app is loaded
+    trackInitiate();
+  }, []);
+
+  useEffect(() => {
+    // Track page views when the route changes
+    pageview();
+  }, [pathname]);
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -36,24 +49,25 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* NoScript Fallback */}
+        {/* Facebook Pixel NoScript Fallback */}
         <noscript>
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=641035925350213&ev=PageView&noscript=1"
           />
         </noscript>
 
-        {/* <Navbar /> */}
-        <div className="mx-auto max-v-xl text-2xl gap-2">
-          {children}
-        </div>
-        {/* <Footer /> */}
-
         {/* Razorpay Script */}
-        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
+        <Script
+          id="razorpay-script"
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="lazyOnload"
+        />
+
+        {/* Main Content */}
+        <div className="mx-auto max-w-xl text-2xl gap-2">{children}</div>
       </body>
     </html>
   );
