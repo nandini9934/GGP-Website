@@ -30,13 +30,12 @@ export default function RootLayout({ children }) {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '641035925350213'); 
-              fbq('track', 'PageView');
+              fbq('init', '641035925350213');      
               fbq('track', 'Initiate');
-              fbq('track', 'Details submitted');
+              fbq('track', 'DetailsSubmitted');
               fbq('track', 'Checkout');
               fbq('track', 'Successs');
-              fbq('track', 'Payment Failed');
+              fbq('track', 'PaymentFailed');
             `,
           }}
         />
