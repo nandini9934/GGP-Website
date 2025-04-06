@@ -32,10 +32,10 @@ export default function RootLayout({ children }) {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '641035925350213');      
               fbq('track', 'Initiate');
-              fbq('track', 'DetailsSubmitted');
+              fbq('track', 'Details submitted');
               fbq('track', 'Checkout');
               fbq('track', 'Successs');
-              fbq('track', 'PaymentFailed');
+              fbq('track', 'Payment failed');
             `,
           }}
         />
