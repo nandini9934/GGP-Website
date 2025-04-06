@@ -1,9 +1,8 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import { pageview, trackInitiate } from "../tracking"; // Importing tracking functions
 import "./globals.css";
+// import Navbar from "./components/Navbar";
+// import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,18 +13,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    // Track the initiation event when the app is loaded
-    trackInitiate();
-  }, []);
-
-  useEffect(() => {
-    // Track page views when the route changes
-    pageview();
-  }, [pathname]);
-
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -45,11 +32,16 @@ export default function RootLayout({ children }) {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '641035925350213'); 
               fbq('track', 'PageView');
+              fbq('track', 'Initiate');
+              fbq('track', 'Details submitted');
+              fbq('track', 'Checkout');
+              fbq('track', 'Successs');
+              fbq('track', 'Payment Failed');
             `,
           }}
         />
 
-        {/* Facebook Pixel NoScript Fallback */}
+        {/* NoScript Fallback */}
         <noscript>
           <img
             height="1"
@@ -59,15 +51,12 @@ export default function RootLayout({ children }) {
           />
         </noscript>
 
-        {/* Razorpay Script */}
-        <Script
-          id="razorpay-script"
-          src="https://checkout.razorpay.com/v1/checkout.js"
-          strategy="lazyOnload"
-        />
+        {/* <Navbar /> */}
+        <div className="mx-auto max-v-xl text-2xl gap-2">{children}</div>
+        {/* <Footer /> */}
 
-        {/* Main Content */}
-        <div className="mx-auto max-w-xl text-2xl gap-2">{children}</div>
+        {/* Razorpay Script */}
+        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       </body>
     </html>
   );
