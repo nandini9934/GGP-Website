@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import TabWithNewTag from "../components/newtab";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -74,7 +75,15 @@ export default function Navbar() {
                     : "hover:text-orange-500 hover:underline"
                 }`}
               >
-                Book Medical Test
+                <TabWithNewTag
+                  classNames={`block text-gray-500 font-bold mb-2 ${
+                    pathname === "/#pricing"
+                      ? "active"
+                      : "hover:text-orange-500 hover:underline"
+                  }`}
+                  label="Book Medical Test"
+                  isNew={true}
+                />
               </Link>
 
               <Link
