@@ -87,6 +87,7 @@ const MakePaymentComponent = () => {
         setIsLoading(false);
         setIsSuccess(true); // ✅ Show success message inside the same box
         setPaymentID(paymentID); // ✅ Store Payment ID
+        window.fbq("track", "Successs");
       })
       .catch(function (error) {
         setIsLoading(false);
