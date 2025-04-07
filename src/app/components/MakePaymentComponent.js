@@ -113,9 +113,12 @@ const MakePaymentComponent = () => {
           name: name,
           contact: contact,
         });
+
+        window.fbq("track", "Checkout");
       })
       .catch(function (error) {
         //console.log(error);
+
         setIsLoading(false);
         setIsUserValid(false);
         setUserDetails({ ...userDetails, email: "", name: "", contact: "" });
