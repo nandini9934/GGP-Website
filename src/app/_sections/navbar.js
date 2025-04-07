@@ -69,14 +69,14 @@ export default function Navbar() {
 
               <Link
                 href="/booktestform"
-                className={`block text-gray-500 font-bold mb-2 ${
+                className={`block text-gray-500 font-bold ${
                   pathname === "/booktestform"
                     ? "active"
                     : "hover:text-orange-500 hover:underline"
                 }`}
               >
                 <TabWithNewTag
-                  classNames={`block text-gray-500 font-bold mb-2 ${
+                  classNames={`block text-gray-500 font-bold ${
                     pathname === "/#pricing"
                       ? "active"
                       : "hover:text-orange-500 hover:underline"
@@ -182,7 +182,15 @@ export default function Navbar() {
                   : "hover:text-orange-500 hover:underline"
               }`}
             >
-              Book Medical Test
+              <TabWithNewTag
+                classNames={`block text-gray-500 font-bold ${
+                  pathname === "/#pricing"
+                    ? "active"
+                    : "hover:text-orange-500 hover:underline"
+                }`}
+                label="Book Medical Test"
+                isNew={true}
+              />
             </Link>
             <Link
               href="/privacy-policy"
