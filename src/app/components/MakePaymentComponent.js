@@ -87,6 +87,7 @@ const MakePaymentComponent = () => {
         setIsLoading(false);
         setIsSuccess(true); // ✅ Show success message inside the same box
         setPaymentID(paymentID); // ✅ Store Payment ID
+        window.fbq("track", "Successs");
       })
       .catch(function (error) {
         setIsLoading(false);
@@ -112,9 +113,12 @@ const MakePaymentComponent = () => {
           name: name,
           contact: contact,
         });
+
+        window.fbq("track", "Checkout");
       })
       .catch(function (error) {
         //console.log(error);
+
         setIsLoading(false);
         setIsUserValid(false);
         setUserDetails({ ...userDetails, email: "", name: "", contact: "" });

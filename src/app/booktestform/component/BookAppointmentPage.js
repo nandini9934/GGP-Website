@@ -105,6 +105,7 @@ function BookAppointmentPage() {
           const razorpayPaymentPageURL =
             "/payments?userid=" + response.data?.userid; //"https://rzp.io/rzp/8AtzhSV";
           router.push(razorpayPaymentPageURL);
+          window.fbq("track", "Details submitted");
         })
         .catch(function (error) {
           setLoading(false);
@@ -116,6 +117,7 @@ function BookAppointmentPage() {
     } catch (error) {
       console.error("Error processing payment:", error);
       alert("Payment failed. Please try again.");
+      window.fbq("track", "Payment failed");
     }
   };
 

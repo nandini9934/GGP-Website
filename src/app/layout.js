@@ -7,14 +7,20 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Good Gut Project - Home',
-  description: 'Welcome to Good Gut Project, your guide to a healthier gut.',
-  keywords: ['Good Gut Project', 'Nutrition', 'Gut Health', 'GGP'],
+  title: "Good Gut Project - Home",
+  description: "Welcome to Good Gut Project, your guide to a healthier gut.",
+  keywords: ["Good Gut Project", "Nutrition", "Gut Health", "GGP"],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="facebook-domain-verification"
+          content="dkttyboexdn25rdm9qrt9wsf86mnkw"
+        />
+      </head>
       <body className={inter.className}>
         {/* Facebook Pixel Script */}
         <Script
@@ -30,8 +36,8 @@ export default function RootLayout({ children }) {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '641035925350213'); 
-              fbq('track', 'PageView');
+              fbq('init', '641035925350213');      
+              fbq('track', 'Initiate'); 
             `,
           }}
         />
@@ -41,7 +47,7 @@ export default function RootLayout({ children }) {
           <img
             height="1"
             width="1"
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             src="https://www.facebook.com/tr?id=641035925350213&ev=PageView&noscript=1"
           />
         </noscript>
@@ -62,9 +68,7 @@ export default function RootLayout({ children }) {
 
 
         {/* <Navbar /> */}
-        <div className="mx-auto max-v-xl text-2xl gap-2">
-          {children}
-        </div>
+        <div className="mx-auto max-v-xl text-2xl gap-2">{children}</div>
         {/* <Footer /> */}
 
         {/* Razorpay Script */}
